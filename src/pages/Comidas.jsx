@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import SearchButton from '../inputs/Search';
+import SearchButton from '../components/inputs/Search';
 
 function Comidas({ history }) {
   const [inputSearch, setInputSearch] = useState(false);
@@ -25,6 +26,7 @@ function Comidas({ history }) {
           data-testId="search-top-btn"
           type="button"
           onClick={ () => showInput() }
+          src={ searchIcon }
         >
           <img src={ searchIcon } alt="icon-search" />
         </button>
@@ -33,5 +35,11 @@ function Comidas({ history }) {
     </>
   );
 }
+
+Comidas.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default Comidas;
