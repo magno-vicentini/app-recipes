@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Login({ history }) {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const SIX = 6;
 
   function validationLogin() {
     const regexLogin = /\S+@\S+\.\S+/;
-    return !((regexLogin.test(userEmail) && userPassword.length > 6));
+    return !((regexLogin.test(userEmail) && userPassword.length > SIX));
   }
 
   function startLocalStorage() {
@@ -47,5 +49,11 @@ function Login({ history }) {
     </form>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 export default Login;
