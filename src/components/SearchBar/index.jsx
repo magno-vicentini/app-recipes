@@ -1,8 +1,26 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import AppDeReceitasContext from '../../Context/AppDeReceitasContext';
+import { fetchDrinkApi, fetchMealApi } from '../../services/fetchAPI';
 
 export default function Search() {
   const { handleRadioChange } = useContext(AppDeReceitasContext);
+  const { pathname } = useLocation();
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (pathname === '/comidas') {
+      const respost = await fetchMealApi('i', 'lemon');
+      console.log(respost);
+    } else if (pathname === '/explorar/comidas/area') {
+      const respost = await fetchMealApi('a', 'canadian');
+      console.log(respost);
+    } else if (pathname === '/bebidas') {
+      const respost = await fetchDrinkApi('i', 'vodka');
+      console.log(respost);
+    } else {
+      console.log('error');
+    }
+  };
 
   return (
     <div className="search-content">
@@ -49,6 +67,7 @@ export default function Search() {
       <button
         type="button"
         data-testid="exec-search-btn"
+        onClick={ handleClick }
       >
         Buscar
       </button>
