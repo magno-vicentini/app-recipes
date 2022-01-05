@@ -2,41 +2,19 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
-import App from '../App';
+import Footer from '../components/Footer';
 
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
-
-const dataTestinputEmail = 'email-input';
-const dataTestinputPassword = 'password-input';
-const dataTestBtnLogin = 'login-submit-btn';
 
 const dataTestMenuFooter = 'footer';
 const dataTestBtnDrinks = 'drinks-bottom-btn';
 const dataTestExplorar = 'explore-bottom-btn';
 const dataTestBtnFood = 'food-bottom-btn';
 
-const email = 'test@test.com';
-const password = '1234567';
-
 describe('Testes Footer Component', () => {
-  it('Teste não pode haver header na tela de login', () => {
-    renderWithRouter(<App />);
-
-    const menuFooter = screen.queryByTestId(dataTestMenuFooter);
-    expect(menuFooter).not.toBeInTheDocument();
-  });
-
   it('Verifica Footer na pagina após login', () => {
-    renderWithRouter(<App />);
-
-    const inputEmail = screen.getByTestId(dataTestinputEmail);
-    const inputPassword = screen.getByTestId(dataTestinputPassword);
-    const btnLogin = screen.getByTestId(dataTestBtnLogin);
-
-    userEvent.type(inputEmail, email);
-    userEvent.type(inputPassword, password);
-    userEvent.click(btnLogin);
+    renderWithRouter(<Footer />);
 
     const menuFooter = screen.getByTestId(dataTestMenuFooter);
     const btnDrink = screen.getByTestId(dataTestBtnDrinks);
@@ -52,30 +30,33 @@ describe('Testes Footer Component', () => {
     expect(btnExplorar.innerHTML).toContain(exploreIcon);
   });
 
-  it.skip('Verifica direcionamento para o Explorar Page', () => {
-    renderWithRouter(<App />);
+  it('Verifica direcionamento para o Explorar Page', () => {
+    const { history } = renderWithRouter(<Footer />);
 
     const btnExplorar = screen.getByTestId(dataTestExplorar);
-
     userEvent.click(btnExplorar);
-    // Continuar
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/explorar');
   });
 
-  it.skip('Verifica direcionamento para o Drink Page', () => {
-    renderWithRouter(<App />);
+  it('Verifica direcionamento para o Drink Page', () => {
+    const { history } = renderWithRouter(<Footer />);
 
     const btnDrink = screen.getByTestId(dataTestBtnDrinks);
-
     userEvent.click(btnDrink);
-    // Continuar
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/bebidas');
   });
 
-  it.skip('Verifica direcionamento para o Food Page', () => {
-    renderWithRouter(<App />);
+  it('Verifica direcionamento para o Food Page', () => {
+    const { history } = renderWithRouter(<Footer />);
 
     const btnFood = screen.getByTestId(dataTestBtnFood);
-
     userEvent.click(btnFood);
-    // Continuar
+
+    const { pathname } = history.location;
+    expect(pathname).toBe('/comidas');
   });
 });
