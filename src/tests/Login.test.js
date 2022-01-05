@@ -4,21 +4,20 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
-const inputEmail = screen.getByTestId('email-input');
-const inputPassword = screen.getByAltText('password-input');
-const btnLogin = screen.getByAltText('login-submit-btn');
+const dataTestinputEmail = 'email-input';
+const dataTestinputPassword = 'password-input';
+const dataTestBtnLogin = 'login-submit-btn';
 
 const email = 'test@test.com';
-const password = '123456';
+const password = '1234567';
 
 describe('Testes Login Page', () => {
-  beforeEach(() => {
-    userEvent.type(inputEmail, '');
-    userEvent.type(inputPassword, '');
-  });
-
   it('Verifica se Inputs de Login existem', () => {
     renderWithRouter(<App />);
+
+    const inputEmail = screen.getByTestId(dataTestinputEmail);
+    const inputPassword = screen.getByTestId(dataTestinputPassword);
+    const btnLogin = screen.getByTestId(dataTestBtnLogin);
 
     expect(inputEmail).toBeInTheDocument();
     expect(inputPassword).toBeInTheDocument();
@@ -28,37 +27,48 @@ describe('Testes Login Page', () => {
   it('Verifica acesso dos Inputs', () => {
     renderWithRouter(<App />);
 
+    const inputEmail = screen.getByTestId(dataTestinputEmail);
+    const inputPassword = screen.getByTestId(dataTestinputPassword);
+
     userEvent.type(inputEmail, email);
-    expect(inputEmail).toBeHaveValue(email);
+    expect(inputEmail).toHaveValue(email);
 
     userEvent.type(inputPassword, password);
-    expect(inputPassword).toBeHaveValue(password);
+    expect(inputPassword).toHaveValue(password);
   });
 
   it('Verifica se email e password é válido', () => {
     renderWithRouter(<App />);
 
+    const inputEmail = screen.getByTestId(dataTestinputEmail);
+    const inputPassword = screen.getByTestId(dataTestinputPassword);
+    const btnLogin = screen.getByTestId(dataTestBtnLogin);
+
     userEvent.type(inputEmail, email);
     userEvent.type(inputPassword, password);
-    expect(btnLogin).not.toBeDisabled();
+    expect(btnLogin).toBeEnabled();
 
     userEvent.type(inputEmail, 'invalidEmail');
     userEvent.type(inputPassword, password);
     expect(btnLogin).toBeDisabled();
 
     userEvent.type(inputEmail, email);
-    userEvent.type(inputPassword, '1234');
+    userEvent.type(inputPassword, '12345');
     expect(btnLogin).toBeDisabled();
   });
 
   it('Verifica direcionamento da página após sucesso', () => {
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
+
+    const inputEmail = screen.getByTestId(dataTestinputEmail);
+    const inputPassword = screen.getByTestId(dataTestinputPassword);
+    const btnLogin = screen.getByTestId(dataTestBtnLogin);
 
     userEvent.type(inputEmail, email);
     userEvent.type(inputPassword, password);
     userEvent.click(btnLogin);
 
-    const { pathname } = history.location;
-    expect(pathname).toBe('/comidas');
+    const comidaText = screen.getByText(/comida/i);
+    expect(comidaText).toBeInTheDocument();
   });
 });

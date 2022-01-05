@@ -3,75 +3,74 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-import Header from '../componentes/Header';
 
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-const inputEmail = screen.getByTestId('email-input');
-const inputPassword = screen.getByAltText('password-input');
-const btnLogin = screen.getByAltText('login-submit-btn');
-const inputSearch = screen.getByTestId('search-input');
+const dataTestinputEmail = 'email-input';
+const dataTestinputPassword = 'password-input';
+const dataTestBtnLogin = 'login-submit-btn';
+
+const dataTestBtnProfile = 'profile-top-btn';
+const dataTestPageTitle = 'page-title';
+const dataTestBtnSearch = 'search-top-btn';
+const dataSearchInput = 'search-input';
 
 const email = 'test@test.com';
-const password = '123456';
-
-const dataTestProfile = screen.getByTestId('profile-top-btn');
-const dataTestPageTitle = screen.getByTestId('page-title');
-const dataTestBtnSearch = screen.getByTestId('search-top-btn');
+const password = '1234567';
 
 describe('Testes Header Component', () => {
   it('Teste não pode haver header na tela de login', () => {
     renderWithRouter(<App />);
 
-    expect(dataTestProfile).not.TobeInTheDocument();
-    expect(dataTestPageTitle).not.TobeInTheDocument();
-    expect(dataTestBtnSearch).not.TobeInTheDocument();
+    const comidaText = screen.queryByText(/comida/i);
+    expect(comidaText).not.toBeInTheDocument();
   });
 
   it('Verifica Header na pagina após login', () => {
-    const { history } = renderWithRouter(<App />);
+    renderWithRouter(<App />);
+
+    const inputEmail = screen.getByTestId(dataTestinputEmail);
+    const inputPassword = screen.getByTestId(dataTestinputPassword);
+    const btnLogin = screen.getByTestId(dataTestBtnLogin);
 
     userEvent.type(inputEmail, email);
     userEvent.type(inputPassword, password);
     userEvent.click(btnLogin);
 
-    const { pathname } = history.location;
-    expect(pathname).toBe('/comidas');
+    const btnProfile = screen.getByTestId(dataTestBtnProfile);
+    const pageTitle = screen.getByTestId(dataTestPageTitle);
+    const btnSearch = screen.getByTestId(dataTestBtnSearch);
 
-    expect(dataTestProfile).TobeInTheDocument();
-    expect(dataTestPageTitle).TobeInTheDocument();
-    expect(dataTestBtnSearch).TobeInTheDocument();
+    expect(btnProfile).toBeInTheDocument();
+    expect(pageTitle).toBeInTheDocument();
+    expect(btnSearch).toBeInTheDocument();
 
-    expect(dataTestProfile.src).toContain(profileIcon);
-    expect(dataTestBtnSearch.src).toContain(searchIcon);
-  });
-
-  it('Verifica direcionamento para o Perfil page', () => {
-    const { history } = renderWithRouter(<App />);
-
-    userEvent.type(inputEmail, email);
-    userEvent.type(inputPassword, password);
-    userEvent.click(btnLogin);
-
-    userEvent.click(dataTestProfile);
-
-    const { pathname } = history.location;
-    expect(pathname).toBe('/perfil');
+    expect(btnProfile.innerHTML).toContain(profileIcon);
+    expect(btnSearch.innerHTML).toContain(searchIcon);
   });
 
   it('Verifica botão de busca', () => {
     renderWithRouter(<App />);
 
-    userEvent.type(inputEmail, email);
-    userEvent.type(inputPassword, password);
-    userEvent.click(btnLogin);
+    const btnSearch = screen.getByTestId(dataTestBtnSearch);
+    const inputSearch = screen.queryByTestId(dataSearchInput);
 
-    expect(inputSearch).not.TobeInTheDocument();
+    expect(btnSearch).toBeInTheDocument();
+    expect(inputSearch).not.toBeInTheDocument();
 
-    userEvent.click(dataTestBtnSearch);
-    expect(inputSearch).TobeInTheDocument();
-    userEvent.click(dataTestBtnSearch);
-    expect(inputSearch).not.TobeInTheDocument();
+    userEvent.click(btnSearch);
+    // expect(inputSearch).toBeInTheDocument();
+    // userEvent.click(BtnSearch);
+    // expect(inputSearch).not.toBeInTheDocument();
+  });
+
+  it.skip('Verifica direcionamento para o Perfil page', () => {
+    renderWithRouter(<App />);
+
+    const btnProfile = screen.getByTestId(dataTestBtnProfile);
+
+    userEvent.click(btnProfile);
+    // Continuar
   });
 });
