@@ -5,7 +5,7 @@ function ReceitasFavoritas() {
   const txt = 'ReceitasFavoritas';
   return (
     <div className="ReceitasFavoritas-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Receitas Favoritas" />
       {txt}
     </div>
   );

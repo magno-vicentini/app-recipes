@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar';
 
-function Header() {
+function Header({ showSearch = true, titlePage }) {
   const [inputSearch, setInputSearch] = useState(false);
 
   function showInput() {
@@ -21,19 +22,26 @@ function Header() {
         >
           <img src={ profileIcon } alt="icon-profile" />
         </Link>
-        <h1 data-testid="page-title">Comidas</h1>
-        <button
-          data-testid="search-top-btn"
-          type="button"
-          onClick={ () => showInput() }
-          src={ searchIcon }
-        >
-          <img src={ searchIcon } alt="icon-search" />
-        </button>
+        <h1 data-testid="page-title">{ titlePage }</h1>
+        { showSearch && (
+          <button
+            data-testid="search-top-btn"
+            type="button"
+            onClick={ () => showInput() }
+            src={ searchIcon }
+          >
+            <img src={ searchIcon } alt="icon-search" />
+          </button>
+        )}
       </header>
       { inputSearch && <SearchBar /> }
     </div>
   );
 }
+
+Header.propTypes = {
+  showSearch: PropTypes.bool.isRequired,
+  titlePage: PropTypes.string.isRequired,
+};
 
 export default Header;

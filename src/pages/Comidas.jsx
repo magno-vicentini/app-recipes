@@ -7,7 +7,7 @@ function Comidas() {
   const txt = 'COMIDAS';
   return (
     <div>
-      <Header />
+      <Header titlePage="Comidas" />
       { txt }
       <Footer />
     </div>

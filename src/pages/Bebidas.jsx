@@ -6,7 +6,7 @@ function Bebidas() {
   const txt = 'Bebidas';
   return (
     <div className="Bebidas-content">
-      <Header />
+      <Header titlePage="Bebidas" />
       {txt}
       <Footer />
     </div>

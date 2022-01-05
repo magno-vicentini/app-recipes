@@ -6,7 +6,7 @@ function ComidasPorIngredientes() {
   const txt = 'ComidasPorIngredientes';
   return (
     <div className="ComidasPorIngredientes-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Explorar Ingredientes" />
       {txt}
       <Footer />
     </div>

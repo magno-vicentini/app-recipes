@@ -6,7 +6,7 @@ function ExplorarBebidas() {
   const txt = 'ExplorarBebidas';
   return (
     <div className="ExplorarBebidas-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Explorar Bebidas" />
       {txt}
       <Footer />
     </div>

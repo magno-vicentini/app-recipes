@@ -6,7 +6,7 @@ function ComidasPorLocal() {
   const txt = 'ComidasPorLocal';
   return (
     <div className="ComidasPorLocal-content">
-      <Header />
+      <Header titlePage="Explorar Origem" />
       {txt}
       <Footer />
     </div>

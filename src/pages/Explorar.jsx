@@ -6,7 +6,7 @@ function Explorar() {
   const txt = 'Explorar';
   return (
     <div className="Explorar-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Explorar" />
       {txt}
       <Footer />
     </div>

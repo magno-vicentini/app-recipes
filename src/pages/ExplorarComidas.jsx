@@ -6,7 +6,7 @@ function ExplorarComidas() {
   const txt = 'ExplorarComidas';
   return (
     <div className="ExplorarComidas-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Explorar Comidas" />
       {txt}
       <Footer />
     </div>

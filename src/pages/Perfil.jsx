@@ -6,7 +6,7 @@ function Perfil() {
   const txt = 'Perfil';
   return (
     <div className="Perfil-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Perfil" />
       {txt}
       <Footer />
     </div>

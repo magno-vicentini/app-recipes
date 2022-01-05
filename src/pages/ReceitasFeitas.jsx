@@ -5,7 +5,7 @@ function ReceitasFeitas() {
   const txt = 'ReceitasFeitas';
   return (
     <div className="ReceitasFeitas-content">
-      <Header />
+      <Header showSearch={ false } titlePage="Receitas Feitas" />
       {txt}
     </div>
   );

@@ -19,7 +19,6 @@ import ProcessoBebida from './pages/ProcessoBebida';
 import ProcessoComida from './pages/ProcessoComida';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
-import Footer from './components/Footer';
 import AppDeReceitasProveider from './Context/AppDeReceitasProvider';
 
 function App() {
@@ -47,7 +46,6 @@ function App() {
           <Route path="/explorar/bebidas" component={ ExplorarBebidas } />
           <Route path="/explorar" component={ Explorar } />
           <Route path="/perfil" component={ Perfil } />
-          <Footer />
           <Route path="/receitas-feitas" component={ ReceitasFeitas } />
           <Route path="/receitas-favoritas" component={ ReceitasFavoritas } />
         </Switch>
