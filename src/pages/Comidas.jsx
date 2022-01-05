@@ -14,16 +14,16 @@ function Comidas({ history }) {
     <>
       <header>
         <button
-          data-testId="profile-top-btn"
+          data-testid="profile-top-btn"
           type="button"
           onClick={ () => history.push('./perfil') }
           src={ profileIcon }
         >
           <img src={ profileIcon } alt="icon-profile" />
         </button>
-        <h1 data-testId="page-title">Comidas</h1>
+        <h1 data-testid="page-title">Comidas</h1>
         <button
-          data-testId="search-top-btn"
+          data-testid="search-top-btn"
           type="button"
           onClick={ () => showInput() }
           src={ searchIcon }
