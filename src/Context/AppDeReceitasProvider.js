@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppDeReceitasContext from './AppDeReceitasContext';
 
 const AppDeReceitasProveider = ({ children }) => {
-  const context = {};
+  const [filter, setFilter] = useState('');
+  const handleRadioChange = ({ target }) => {
+    setFilter(target.value);
+  };
+  const context = {
+    handleRadioChange,
+    filter,
+  };
   return (
     <AppDeReceitasContext.Provider value={ context }>
       { children }

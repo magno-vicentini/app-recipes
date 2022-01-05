@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppDeReceitasContext from '../../Context/AppDeReceitasContext';
 
 export default function Search() {
+  const { handleRadioChange } = useContext(AppDeReceitasContext);
+
   return (
     <div className="search-content">
       <input
         type="text"
-        data-testId="search-input"
+        data-testid="search-input"
+        placeholder="Search Recipe"
       />
-      <div className="filters-inputs-container">
+      <div
+        className="filters-inputs-container"
+        onChange={ handleRadioChange }
+      >
         <label htmlFor="ingredient-filter">
           <input
             id="ingredient-filter"
