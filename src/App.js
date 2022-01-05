@@ -17,19 +17,19 @@ function App() {
           <Route path="/bebidas" />
           <Route path="/comidas/:id" />
           <Route path="/bebidas/:id" />
-          <Route path="/comidas/:id/in-progress" />
-          <Route path="/bebidas/:id/in-progress" />
           <Route path="/explorar" />
           <Route path="/explorar/comidas" />
           <Route path="/explorar/bebidas" />
-          <Route path="/explorar/comidas/ingredientes" />
-          <Route path="/explorar/bebidas/ingredientes" />
           <Route path="/explorar/comidas/area" />
           <Route path="/perfil" />
-          <Route path="/receitas-feitas" />
-          <Route path="/receitas-favoritas" />
           <Footer />
         </Route>
+        <Route path="/receitas-feitas" />
+        <Route path="/receitas-favoritas" />
+        <Route path="/comidas/:id/in-progress" />
+        <Route path="/bebidas/:id/in-progress" />
+        <Route path="/explorar/comidas/ingredientes" />
+        <Route path="/explorar/bebidas/ingredientes" />
       </Switch>
     </BrowserRouter>
   );
