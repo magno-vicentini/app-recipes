@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
-function Login({ history }) {
+function Login() {
+  const history = useHistory();
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const SIX = 6;
@@ -12,10 +14,10 @@ function Login({ history }) {
   }
 
   function startLocalStorage() {
+    history.push('/comidas');
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email: userEmail }));
-    history.push('/comidas');
   }
 
   return (

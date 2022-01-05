@@ -1,8 +1,8 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
-import App from '../App';
+import Login from '../pages/Login';
 
 const dataTestinputEmail = 'email-input';
 const dataTestinputPassword = 'password-input';
@@ -13,7 +13,7 @@ const password = '1234567';
 
 describe('Testes Login Page', () => {
   it('Verifica se Inputs de Login existem', () => {
-    renderWithRouter(<App />);
+    renderWithRouter(<Login />);
 
     const inputEmail = screen.getByTestId(dataTestinputEmail);
     const inputPassword = screen.getByTestId(dataTestinputPassword);
@@ -25,7 +25,7 @@ describe('Testes Login Page', () => {
   });
 
   it('Verifica acesso dos Inputs', () => {
-    renderWithRouter(<App />);
+    renderWithRouter(<Login />);
 
     const inputEmail = screen.getByTestId(dataTestinputEmail);
     const inputPassword = screen.getByTestId(dataTestinputPassword);
@@ -38,7 +38,7 @@ describe('Testes Login Page', () => {
   });
 
   it('Verifica se email e password é válido', () => {
-    renderWithRouter(<App />);
+    renderWithRouter(<Login />);
 
     const inputEmail = screen.getByTestId(dataTestinputEmail);
     const inputPassword = screen.getByTestId(dataTestinputPassword);
@@ -57,8 +57,8 @@ describe('Testes Login Page', () => {
     expect(btnLogin).toBeDisabled();
   });
 
-  it('Verifica direcionamento da página após sucesso', () => {
-    renderWithRouter(<App />);
+  it('Verifica direcionamento da página após sucesso', async () => {
+    const { history } = renderWithRouter(<Login />);
 
     const inputEmail = screen.getByTestId(dataTestinputEmail);
     const inputPassword = screen.getByTestId(dataTestinputPassword);
@@ -66,9 +66,10 @@ describe('Testes Login Page', () => {
 
     userEvent.type(inputEmail, email);
     userEvent.type(inputPassword, password);
-    userEvent.click(btnLogin);
+    fireEvent.click(btnLogin);
 
-    const comidaText = screen.getByText(/comida/i);
-    expect(comidaText).toBeInTheDocument();
+    const { pathname } = history.location;
+    console.log(pathname);
+    expect(pathname).toBe('/comidas');
   });
 });

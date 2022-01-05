@@ -14,7 +14,12 @@ const dataTestBtnLogin = 'login-submit-btn';
 const dataTestBtnProfile = 'profile-top-btn';
 const dataTestPageTitle = 'page-title';
 const dataTestBtnSearch = 'search-top-btn';
+
 const dataSearchInput = 'search-input';
+const dataTestRdIngredient = 'ingredient-search-radio';
+const dataTestRdName = 'name-search-radio';
+const dataTestRdFirstLetter = 'first-letter-search-radio';
+const dataTestBtnRdSearch = 'exec-search-btn';
 
 const email = 'test@test.com';
 const password = '1234567';
@@ -59,11 +64,24 @@ describe('Testes Header Component', () => {
     userEvent.click(btnSearch);
 
     const inputSearch = screen.queryByTestId(dataSearchInput);
+    const rdIngredient = screen.queryByTestId(dataTestRdIngredient);
+    const rdName = screen.queryByTestId(dataTestRdName);
+    const rdFirstLetter = screen.queryByTestId(dataTestRdFirstLetter);
+    const btnRdSearch = screen.queryByTestId(dataTestBtnRdSearch);
+
     expect(inputSearch).toBeInTheDocument();
+    expect(rdIngredient).toBeInTheDocument();
+    expect(rdName).toBeInTheDocument();
+    expect(rdFirstLetter).toBeInTheDocument();
+    expect(btnRdSearch).toBeInTheDocument();
 
     userEvent.click(btnSearch);
 
     expect(inputSearch).not.toBeInTheDocument();
+    expect(rdIngredient).not.toBeInTheDocument();
+    expect(rdName).not.toBeInTheDocument();
+    expect(rdFirstLetter).not.toBeInTheDocument();
+    expect(btnRdSearch).not.toBeInTheDocument();
   });
 
   it.skip('Verifica direcionamento para o Perfil Page', () => {
