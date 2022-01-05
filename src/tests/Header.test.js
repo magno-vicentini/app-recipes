@@ -50,22 +50,23 @@ describe('Testes Header Component', () => {
     expect(btnSearch.innerHTML).toContain(searchIcon);
   });
 
-  it('Verifica botão de busca', () => {
+  it('Verifica botão e input de busca', () => {
     renderWithRouter(<App />);
 
     const btnSearch = screen.getByTestId(dataTestBtnSearch);
-    const inputSearch = screen.queryByTestId(dataSearchInput);
-
     expect(btnSearch).toBeInTheDocument();
-    expect(inputSearch).not.toBeInTheDocument();
 
     userEvent.click(btnSearch);
-    // expect(inputSearch).toBeInTheDocument();
-    // userEvent.click(BtnSearch);
-    // expect(inputSearch).not.toBeInTheDocument();
+
+    const inputSearch = screen.queryByTestId(dataSearchInput);
+    expect(inputSearch).toBeInTheDocument();
+
+    userEvent.click(btnSearch);
+
+    expect(inputSearch).not.toBeInTheDocument();
   });
 
-  it.skip('Verifica direcionamento para o Perfil page', () => {
+  it.skip('Verifica direcionamento para o Perfil Page', () => {
     renderWithRouter(<App />);
 
     const btnProfile = screen.getByTestId(dataTestBtnProfile);
