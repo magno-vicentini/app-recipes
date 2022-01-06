@@ -40,8 +40,12 @@ function Header({ showSearch = true, titlePage }) {
 }
 
 Header.propTypes = {
-  showSearch: PropTypes.bool.isRequired,
+  showSearch: PropTypes.bool,
   titlePage: PropTypes.string.isRequired,
+};
+
+Header.defaultProps = {
+  showSearch: true,
 };
 
 export default Header;

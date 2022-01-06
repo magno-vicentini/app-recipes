@@ -1,24 +1,41 @@
 import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import AppDeReceitasContext from '../../Context/AppDeReceitasContext';
 import { fetchDrinkApi, fetchMealApi } from '../../services/fetchAPI';
 
 export default function Search() {
-  const { handleRadioChange } = useContext(AppDeReceitasContext);
+  const { handleRadioChange,
+    setRender,
+    filter,
+    setSearchInput,
+    searchInput,
+  } = useContext(AppDeReceitasContext);
   const { pathname } = useLocation();
+  const { push } = useHistory();
   const handleClick = async (e) => {
     e.preventDefault();
-    if (pathname === '/comidas') {
-      const respost = await fetchMealApi('i', 'lemon');
-      console.log(respost);
-    } else if (pathname === '/explorar/comidas/area') {
-      const respost = await fetchMealApi('a', 'canadian');
-      console.log(respost);
+    if (pathname === '/comidas' || pathname === '/explorar/comidas/area') {
+      const respost = await fetchMealApi(filter, searchInput);
+      const { meals } = respost;
+      if (!meals) {
+        global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      } else if (meals.length === 1) {
+        push(`/comidas/${respost.meals[0].idMeal}`);
+      } else {
+        setRender(respost.meals);
+        setSearchInput('');
+      }
     } else if (pathname === '/bebidas') {
-      const respost = await fetchDrinkApi('i', 'vodka');
-      console.log(respost);
-    } else {
-      console.log('error');
+      const respost = await fetchDrinkApi(filter, searchInput);
+      const { drinks } = respost;
+      if (!drinks) {
+        global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      } else if (respost.drinks.length !== 1) {
+        setRender(respost.drinks);
+        setSearchInput('');
+      } else {
+        push(`/bebidas/${respost.drinks[0].idDrink}`);
+      }
     }
   };
 
@@ -26,8 +43,16 @@ export default function Search() {
     <div className="search-content">
       <input
         type="text"
+        value={ searchInput }
         data-testid="search-input"
         placeholder="Search Recipe"
+        onChange={ ({ target }) => {
+          if (filter === 'f' && target.value.length > 1) {
+            global.alert('Sua busca deve conter somente 1 (um) caracter');
+            return (setSearchInput(''));
+          }
+          return (setSearchInput(target.value));
+        } }
       />
       <div
         className="filters-inputs-container"
@@ -35,6 +60,7 @@ export default function Search() {
       >
         <label htmlFor="ingredient-filter">
           <input
+            selected
             id="ingredient-filter"
             type="radio"
             value="ingredientes"
