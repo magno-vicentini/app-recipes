@@ -30,14 +30,12 @@ function Login() {
       <input
         type="email"
         value={ userEmail }
-        id=""
         data-testid="email-input"
         onChange={ (e) => setUserEmail(e.target.value) }
       />
       <input
         type="password"
         value={ userPassword }
-        id=""
         data-testid="password-input"
         onChange={ (e) => setUserPassword(e.target.value) }
       />
