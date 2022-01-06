@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function Perfil() {
+  const [email, setEmail] = useState();
   const history = useHistory();
+  const getEmail = async () => {
+    const emailObj = await JSON.parse(localStorage.getItem('user'));
+    setEmail(emailObj.email);
+  };
+
+  useEffect(() => {
+    getEmail();
+  }, []);
 
   const resetLocalStorage = () => {
     localStorage.removeItem('mealsToken');
@@ -20,7 +29,7 @@ function Perfil() {
     <div className="Perfil-content">
       <Header showSearch={ false } titlePage="Perfil" />
       <h1 data-testid="profile-email">
-        {JSON.parse(localStorage.getItem('user')).email}
+        {email}
       </h1>
       <button
         type="button"
