@@ -16,7 +16,7 @@ function Bebidas() {
           if (i < TWELVE) {
             return (
               <ResultCard
-                drinkId={ e.idDrink }
+                id={ e.idDrink }
                 index={ i }
                 key={ i }
                 image={ e.strDrinkThumb }
