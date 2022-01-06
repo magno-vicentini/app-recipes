@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import SearchBar from '../components/SearchBar';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
+import mockComida from '../mocks/comidas';
 
 const dataSearchInput = 'search-input';
 const dataTestRdIngredient = 'ingredient-search-radio';
@@ -11,13 +12,14 @@ const dataTestRdName = 'name-search-radio';
 const dataTestRdFirstLetter = 'first-letter-search-radio';
 const dataTestBtnRdSearch = 'exec-search-btn';
 
-describe('', () => {
-  it('Verifica componets searchBar', async () => {
+describe('Verifica SearchBar', () => {
+  it('Verifica componets searchBar',() => {
     renderWithRouter(
       <AppDeReceitasProvider>
         <SearchBar />
       </AppDeReceitasProvider>,
     );
+
     const inputSearch = screen.getByTestId(dataSearchInput);
     const rdIngredient = screen.getByTestId(dataTestRdIngredient);
     const rdName = screen.getByTestId(dataTestRdName);
@@ -47,5 +49,28 @@ describe('', () => {
     expect(rdFirstLetter.checked).toBe(true);
     expect(rdIngredient.checked).toBe(false);
     expect(rdName.checked).toBe(false);
+  });
+
+  it.skip('Verifica Fetch Ingredients', async () => {
+    renderWithRouter(
+      <AppDeReceitasProvider>
+        <SearchBar />
+      </AppDeReceitasProvider>,
+    );
+
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockComida),
+    });
+
+    const inputSearch = screen.getByTestId(dataSearchInput);
+    const rdIngredient = screen.getByTestId(dataTestRdIngredient);
+    const btnRdSearch = screen.getByTestId(dataTestBtnRdSearch);
+
+    userEvent.type(inputSearch, 'bacon');
+    userEvent.click(rdIngredient);
+    userEvent.click(btnRdSearch);
+
+    
   });
 });
