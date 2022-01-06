@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Comidas from './pages/Comidas';
 import Bebidas from './pages/Bebidas';
 import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
-import Bebidas from './pages/Bebidas';
 import BebidasPorIngredientes from './pages/BebidasPorIngredientes';
 import ComidasPorIngredientes from './pages/ComidasPorIngredientes';
 import ComidasPorLocal from './pages/ComidasPorLocal';
