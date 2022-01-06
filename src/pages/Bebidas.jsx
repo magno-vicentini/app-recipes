@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-
-function Bebidas() {
-  const txt = 'Bebidas';
-  return (
-    <div className="Bebidas-content">
-      {txt}
-=======
 import React, { useContext } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -36,7 +27,6 @@ function Bebidas() {
           return ('');
         })}
       <Footer />
->>>>>>> 674181e55b4e347dff248e3723c859af225ee6c1
     </div>
   );
 }
