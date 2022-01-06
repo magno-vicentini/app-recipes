@@ -6,7 +6,11 @@ export default function Instructions({ instructionsText }) {
     <div className="instructions-container">
       <h2>Instructions</h2>
       <div className="instructions-content">
-        <p>{instructionsText}</p>
+        <p
+          data-testid="instructions"
+        >
+          {instructionsText}
+        </p>
       </div>
     </div>
   );

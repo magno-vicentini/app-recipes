@@ -8,7 +8,13 @@ export default function Video({ link }) {
       <div className="video-container">
         <h2>Video</h2>
         <div className="video-content">
-          <iframe title="recipe video" width="320" height="240" src={ url } />
+          <iframe
+            title="recipe video"
+            width="320"
+            height="240"
+            src={ url }
+            data-testid="video"
+          />
         </div>
       </div>
     );
@@ -17,7 +23,13 @@ export default function Video({ link }) {
     <div className="video-container">
       <h2>Video</h2>
       <div className="video-content">
-        <iframe title="recipe video" width="320" height="240" src={ link } />
+        <iframe
+          title="recipe video"
+          width="320"
+          height="240"
+          src={ link }
+          data-testid="video"
+        />
       </div>
     </div>
   );

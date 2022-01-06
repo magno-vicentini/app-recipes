@@ -9,9 +9,10 @@ export default function Recommended({ recipes }) {
       <h2>Recomendadas</h2>
       <div className="recommended-content">
         {recipes.map((e, i) => {
-          if (i <= SIX) {
+          if (i < SIX) {
             return (
               <ResultCard
+                data-testid={ `${i}-recomendation-card` }
                 id={ e.idMeal }
                 index={ i }
                 key={ i }

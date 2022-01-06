@@ -13,19 +13,34 @@ export default function HeaderRecipe({ image, title, subtitle }) {
   return (
     <div className="header-recipe-container">
       <img
+        data-testid="recipe-photo"
         src={ image }
         alt={ title }
       />
       <div className="header-recipe-content">
-        <h2>{ title }</h2>
-        <h4>{ subtitle }</h4>
+        <h2
+          data-testid="recipe-title"
+        >
+          { title }
+        </h2>
+        <h4
+          data-testid="recipe-category"
+        >
+          { subtitle }
+        </h4>
         <div className="icons-content">
-          <img src={ shareIcon } alt="share icon" />
+          <button
+            type="button"
+            data-testid="share-btn"
+          >
+            <img src={ shareIcon } alt="share icon" />
+          </button>
           {isFavorite
             ? (
               <button
                 type="button"
                 onClick={ toggleFavorite }
+                data-testid="favorite-btn"
               >
                 <img
                   src={ blackHeartIcon }
@@ -37,6 +52,7 @@ export default function HeaderRecipe({ image, title, subtitle }) {
               <button
                 type="button"
                 onClick={ toggleFavorite }
+                data-testid="favorite-btn"
               >
                 <img
                   src={ whiteHeartIcon }

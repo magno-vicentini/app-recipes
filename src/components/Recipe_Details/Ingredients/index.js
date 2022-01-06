@@ -7,7 +7,14 @@ export default function Ingredients({ ingredients, measures }) {
       <h2>Ingredientes</h2>
       <div className="ingredients-content">
         <ul>
-          {ingredients.map((e, i) => <li key={ i }>{`${e} - ${measures[i]}`}</li>)}
+          {ingredients.map((e, i) => (
+            <li
+              key={ i }
+              data-testid={ `${i}-ingredient-name-and-measure` }
+            >
+              {`${e} - ${measures[i]}`}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
