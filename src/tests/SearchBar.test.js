@@ -29,5 +29,23 @@ describe('', () => {
     expect(rdName).toBeInTheDocument();
     expect(rdFirstLetter).toBeInTheDocument();
     expect(btnRdSearch).toBeInTheDocument();
+
+    userEvent.type(inputSearch, 'comida')
+    expect(inputSearch.value).toBe('comida');
+
+    userEvent.click(rdIngredient)
+    expect(rdIngredient.checked).toBe(true);
+    expect(rdName.checked).toBe(false);
+    expect(rdFirstLetter.checked).toBe(false);
+
+    userEvent.click(rdName)
+    expect(rdName.checked).toBe(true);
+    expect(rdIngredient.checked).toBe(false);
+    expect(rdFirstLetter.checked).toBe(false);
+
+    userEvent.click(rdFirstLetter)
+    expect(rdFirstLetter.checked).toBe(true);
+    expect(rdIngredient.checked).toBe(false);
+    expect(rdName.checked).toBe(false);
   });
 });
