@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AppDeReceitasContext from './AppDeReceitasContext';
+import mockComida from '../mocks/comidas';
+import mockBebidas from '../mocks/bebidas';
 
-const AppDeReceitasProveider = ({ children }) => {
+const AppDeReceitasProveider = ({ children, renderTest = '' }) => {
   const [filter, setFilter] = useState('i');
   const [searchInput, setSearchInput] = useState('');
   const [render, setRender] = useState([]);
+
+  useEffect(() => {
+    if(renderTest === 'comidas') setRender(mockComida);
+    else if(renderTest === 'bebidas') setRender(mockBebidas);
+  }, []);
+
   const handleRadioChange = ({ target }) => {
     if (target.value === 'ingredientes') {
       setFilter('i');

@@ -4,24 +4,28 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Comidas from '../pages/Comidas';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
-
-const mockRender = [
-  {
-    idMeal: '52768',
-    strMeal: 'Apple Frangipan Tart',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg'
-  },
-]
+import mockComida from '../mocks/comidas';
 
 describe('', () => {
   it('Verifica component Comidas', async () => {
     renderWithRouter(
-      <AppDeReceitasProvider>
+      <AppDeReceitasProvider renderTest={ 'comidas' }>
         <Comidas />
       </AppDeReceitasProvider>,
     );
 
     const title = screen.getByText('Comidas');
     expect(title.innerHTML).toBe('Comidas');
+
+    const cardRecipe = screen.getByTestId('1-recipe-card');
+    const cardName = screen.getByTestId('1-card-name');
+    const cardImg = screen.getByTestId('1-card-img');
+
+    expect(cardRecipe).toBeInTheDocument();
+    expect(cardName).toBeInTheDocument();
+    expect(cardImg).toBeInTheDocument();
+
+    expect(cardName.innerHTML).toContain(mockComida[1].strMeal);
+    expect(cardImg.src).toContain(mockComida[1].strMealThumb);
   });
 });
