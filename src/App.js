@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Comidas from './pages/Comidas';
 import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
+import Bebidas from './pages/Bebidas';
 import BebidasPorIngredientes from './pages/BebidasPorIngredientes';
 import ComidasPorIngredientes from './pages/ComidasPorIngredientes';
 import ComidasPorLocal from './pages/ComidasPorLocal';
