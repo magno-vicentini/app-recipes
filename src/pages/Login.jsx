@@ -13,10 +13,15 @@ function Login() {
     return !((regexLogin.test(userEmail) && userPassword.length > SIX));
   }
 
+  const inProgressObj = { cocktails: {}, meals: {} };
+
   function startLocalStorage() {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email: userEmail }));
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressObj));
+    localStorage.setItem('doneRecipes', JSON.stringify([]));
     history.push('/comidas');
   }
 

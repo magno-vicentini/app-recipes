@@ -35,7 +35,8 @@ function Bebidas({ renderTest = false }) {
           if (i < TWELVE) {
             return (
               <ResultCard
-                drinkId={ e.idDrink }
+                type="recipe"
+                id={ e.idDrink }
                 index={ i }
                 key={ i }
                 image={ e.strDrinkThumb }
