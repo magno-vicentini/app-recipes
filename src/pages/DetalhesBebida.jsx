@@ -50,20 +50,6 @@ function DetalhesBebida() {
     }
   }, [donedRecipes]);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   const obj = {
-  //     `${params.id}`: ,
-  //   };
-
-  //   const newDoneArray = [];
-  //   if (donedRecipes) {
-  //     newDoneArray.push(...donedRecipes);
-  //   }
-  //   newDoneArray.push(obj);
-  //   localStorage.setItem('doneRecipes', JSON.stringify(newDoneArray));
-  // };
-
   return (
     <div className="details-drink-container">
       {recipe !== {} && (

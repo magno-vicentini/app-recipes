@@ -51,15 +51,6 @@ function DetalhesComida() {
     }
   }, [donedRecipes]);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   const obj = {
-  //     id: params.id,
-  //     isStarted: true,
-  //   };
-  //   setOpenRecipes([...openRecipes, obj]);
-  // };
-
   return (
     <div className="DetalhesComida-container">
       {recipe !== {} && (
