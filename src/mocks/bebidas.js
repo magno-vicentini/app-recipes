@@ -11,4 +11,12 @@ const mockBebidas = [
   },
 ]
 
+export const categoryDrink = [
+  { strCategory: 'coca' },
+  { strCategory: 'suco' },
+  { strCategory: 'agua' },
+  { strCategory: 'limonada' },
+  { strCategory: 'pinga' }
+]
+
 export default mockBebidas;

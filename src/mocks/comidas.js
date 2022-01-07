@@ -12,4 +12,12 @@ const mockComida = [
   },
 ]
 
+export const categoryFood = [
+  { strCategory: 'feijao' },
+  { strCategory: 'ovo' },
+  { strCategory: 'pao' },
+  { strCategory: 'queijo' },
+  { strCategory: 'azeite' }
+]
+
 export default mockComida;

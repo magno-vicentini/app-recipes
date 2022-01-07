@@ -10,8 +10,10 @@ describe('Verifica FetchApi', () => {
     });
     
     const fetch = await fetchMealApi('f', 'a')
-
     expect(fetch).toBe(mockComida);
+
+    const fetchTwo = await fetchMealApi('i', 'bacon')
+    expect(fetchTwo).toBe(mockComida);
   });
 
   it('Verifica FetchApi fetchDrinkApi', async () => {
@@ -21,7 +23,9 @@ describe('Verifica FetchApi', () => {
     });
     
     const fetch = await fetchDrinkApi('f', 'a')
-
     expect(fetch).toBe(mockBebidas);
+
+    const fetchTwo = await fetchDrinkApi('i', 'lime')
+    expect(fetchTwo).toBe(mockBebidas);
   });
 });

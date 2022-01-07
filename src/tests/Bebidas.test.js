@@ -1,10 +1,10 @@
 import React from 'react';
-import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import Bebidas from '../pages/Bebidas';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
-import mockBebidas from '../mocks/bebidas';
+import mockBebidas, { categoryDrink } from '../mocks/bebidas';
+import { act } from 'react-dom/test-utils';
 
 describe('', () => {
   it('Verifica component Bebidas', async () => {
@@ -28,4 +28,26 @@ describe('', () => {
     expect(cardName.innerHTML).toContain(mockBebidas[0].strDrink);
     expect(cardImg.src).toContain(mockBebidas[0].strDrinkThumb);
   });
+
+  it('Test Button Category', async () => {
+    await act(async () => {
+      renderWithRouter(
+        <AppDeReceitasProvider>
+          <Bebidas renderTest={ true } />
+        </AppDeReceitasProvider>,
+      );
+    });
+
+    const btnCategory1 = await screen.findByTestId(`${categoryDrink[0].strCategory}-category-filter`);
+    const btnCategory2 = await screen.findByTestId(`${categoryDrink[1].strCategory}-category-filter`);
+    const btnCategory3 = await screen.findByTestId(`${categoryDrink[2].strCategory}-category-filter`);
+    const btnCategory4 = await screen.findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
+    const btnCategory5 = await screen.findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
+
+    expect(btnCategory1).toBeInTheDocument();
+    expect(btnCategory2).toBeInTheDocument();
+    expect(btnCategory3).toBeInTheDocument();
+    expect(btnCategory4).toBeInTheDocument();
+    expect(btnCategory5).toBeInTheDocument();
+  })
 });
