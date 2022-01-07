@@ -12,9 +12,9 @@ function DetalhesBebida() {
 
   const [recommendeds, setRecommendeds] = useState([]);
   const [showButton, setShowButton] = useState(true);
+  const [buttomText, setButtomText] = useState('Iniciar Receita');
   const [recipe, setRecipe] = useState({});
   const [recipeIngredients, setRecipeIngredients] = useState([]);
-  const [recipeMeasures, setRecipeMeasures] = useState([]);
 
   const { params } = useRouteMatch();
 
@@ -25,19 +25,18 @@ function DetalhesBebida() {
     const recipeResult = recipeObj.drinks[0];
     setRecipe(recipeResult);
     const ingredients = [];
-    const measures = [];
     for (let i = 1; i <= TWENTY; i += 1) {
       const ingredient = recipeResult[`strIngredient${i}`];
       const measure = recipeResult[`strMeasure${i}`];
+      const letMeasure = measure === null ? '-' : measure;
       if (ingredient) {
-        ingredients.push(ingredient);
-        measures.push(measure);
+        ingredients.push(`${ingredient} - ${letMeasure}`);
       }
     }
     setRecipeIngredients(ingredients);
-    setRecipeMeasures(measures);
   };
   const donedRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
   useEffect(() => {
     getRecipe();
@@ -45,10 +44,29 @@ function DetalhesBebida() {
 
   useEffect(() => {
     const thisRecipe = donedRecipes && donedRecipes.find((e) => e.id === params.id);
-    if (donedRecipes && thisRecipe) {
+    if (thisRecipe) {
       setShowButton(!showButton);
     }
-  }, [donedRecipes]);
+    if (inProgressRecipes
+      && inProgressRecipes.cocktails
+      && inProgressRecipes.cocktails[params.id]) {
+      setButtomText('Continuar Receita');
+    }
+  }, [donedRecipes, inProgressRecipes]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (buttomText === 'Iniciar Receita') {
+      const newInProgress = { ...inProgressRecipes };
+      const key = params.id;
+      newInProgress.cocktails = {
+        ...newInProgress.cocktails,
+        [key]: recipeIngredients,
+      };
+      localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgress));
+      setButtomText('Continuar Receita');
+    }
+  };
 
   return (
     <div className="details-drink-container">
@@ -61,7 +79,6 @@ function DetalhesBebida() {
           />
           <Ingredients
             ingredients={ recipeIngredients }
-            measures={ recipeMeasures }
           />
           <Instructions instructionsText={ recipe.strInstructions } />
           <Recommended gender="meals" recipes={ recommendeds } />
@@ -70,9 +87,9 @@ function DetalhesBebida() {
               className="btn-start-recipe"
               type="button"
               data-testid="start-recipe-btn"
-              // onClick={ handleClick }
+              onClick={ handleClick }
             >
-              Iniciar Receita
+              { buttomText }
             </button>
           )}
         </div>

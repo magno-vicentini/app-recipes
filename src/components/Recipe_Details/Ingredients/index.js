@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Ingredients({ ingredients, measures }) {
+export default function Ingredients({ ingredients }) {
   return (
     <div className="ingredients-container">
       <h2>Ingredientes</h2>
@@ -12,7 +12,7 @@ export default function Ingredients({ ingredients, measures }) {
               key={ i }
               data-testid={ `${i}-ingredient-name-and-measure` }
             >
-              {`${e} - ${measures[i]}`}
+              {e}
             </li>
           ))}
         </ul>
@@ -23,5 +23,4 @@ export default function Ingredients({ ingredients, measures }) {
 
 Ingredients.propTypes = {
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-  measures: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
