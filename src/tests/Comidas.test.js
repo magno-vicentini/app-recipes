@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Comidas from '../pages/Comidas';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
@@ -49,5 +50,7 @@ describe('', () => {
     expect(btnCategory3).toBeInTheDocument();
     expect(btnCategory4).toBeInTheDocument();
     expect(btnCategory5).toBeInTheDocument();
+
+    userEvent.click(btnCategory1);
   })
 });

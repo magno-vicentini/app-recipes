@@ -9,7 +9,14 @@ const image = 'https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg
 
 describe('', () => {
   it('Verifica component ResultCard', async () => {
-    renderWithRouter(<ResultCard index="1" name={ name } image={ image } />);
+    renderWithRouter(
+    <ResultCard 
+      index="1"
+      name={ name }
+      image={ image }
+      type={ 'recipe' }
+    />
+    );
 
     const cardRecipe = screen.getByTestId('1-recipe-card');
     const cardName = screen.getByTestId('1-card-name');
