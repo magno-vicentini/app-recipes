@@ -4,23 +4,26 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
-import useCategory from '../hooks/useCategory';
+import useCategoryMeals from '../hooks/useCategoryMeals';
 
 function Comidas() {
   const [twelveFoods, setTwelveFoods] = useState([]);
   const [mealsCategories, setMealsCategories] = useState([]);
+  const [filterUsed, setFilterUsed] = useState('search.php?s=');
+  const FIVE = 5;
   const TWELVE = 12;
 
-  const URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const URL = `https://www.themealdb.com/api/json/v1/1/${filterUsed}`;
   useEffect(() => {
     const fetchMeals = async () => {
       const { meals } = await fetch(URL).then((response) => response.json());
       setTwelveFoods(meals.slice(0, TWELVE));
     };
     fetchMeals();
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterUsed]);
 
-  useCategory('themealdb', setMealsCategories, 'meals');
+  useCategoryMeals(setMealsCategories);
   const { render } = useContext(AppDeReceitasContext);
 
   return (
@@ -42,23 +45,24 @@ function Comidas() {
           }
           return ('');
         })}
-      {twelveFoods.map((food, index) => (
-        <div key={ food.idMeal } data-testid={ `${index}-recipe-card` }>
-          <img src={ food.strMealThumb } alt="" data-testid={ `${index}-card-img` } />
-          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-        </div>
-      ))}
       {
-        mealsCategories.map((meal) => (
+        mealsCategories.slice(0, FIVE).map((meal) => (
           <button
             data-testid={ `${meal.strCategory}-category-filter` }
             type="button"
+            onClick={ () => setFilterUsed(`filter.php?c=${meal.strCategory}`) }
             key={ meal.strCategory }
           >
             {meal.strCategory}
           </button>
         ))
       }
+      {twelveFoods.map((food, index) => (
+        <div key={ food.idMeal } data-testid={ `${index}-recipe-card` }>
+          <img src={ food.strMealThumb } alt="" data-testid={ `${index}-card-img` } />
+          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
+        </div>
+      ))}
       <Footer />
     </div>
   );
