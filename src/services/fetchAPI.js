@@ -14,4 +14,12 @@ const fetchMealApi = async (type, search) => {
   return (result);
 };
 
-export { fetchDrinkApi, fetchMealApi };
+const fetchRecipe = async (gender, id) => {
+  const filter = await gender === 'food' ? 'themealdb' : 'thecocktaildb';
+  const url = `https://www.${filter}.com/api/json/v1/1/lookup.php?i=${id}`;
+  const response = await fetch(url);
+  const result = await response.json();
+  return (result);
+};
+
+export { fetchDrinkApi, fetchMealApi, fetchRecipe };
