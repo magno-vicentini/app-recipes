@@ -1,8 +1,8 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
+import React from 'react';
 import { act } from 'react-dom/test-utils';
-import renderWithRouter from './renderWithRouter';
 import Ingredients from '../components/Recipe_Details/Ingredients';
+import renderWithRouter from './renderWithRouter';
 
 const ingradados = [
   'ovo',

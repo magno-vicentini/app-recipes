@@ -1,11 +1,11 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import React from 'react';
 import Header from '../components/Header';
-
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import renderWithRouter from './renderWithRouter';
+
 
 const dataTestBtnProfile = 'profile-top-btn';
 const dataTestPageTitle = 'page-title';

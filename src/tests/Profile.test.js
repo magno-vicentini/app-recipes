@@ -1,9 +1,9 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
-import Perfil from '../pages/Perfil';
+import React from 'react';
 import { act } from 'react-dom/test-utils';
+import Perfil from '../pages/Perfil';
+import renderWithRouter from './renderWithRouter';
 
 const email = 'test@test.com';
 

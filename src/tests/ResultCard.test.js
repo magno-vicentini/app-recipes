@@ -1,8 +1,7 @@
+import { screen } from '@testing-library/react';
 import React from 'react';
-import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
 import ResultCard from '../components/ResultCard';
+import renderWithRouter from './renderWithRouter';
 
 const name = 'Apple Frangipan Tart';
 const image = 'https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg';

@@ -1,11 +1,10 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import React from 'react';
 import Footer from '../components/Footer';
-
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
+import renderWithRouter from './renderWithRouter';
 
 const dataTestMenuFooter = 'footer';
 const dataTestBtnDrinks = 'drinks-bottom-btn';

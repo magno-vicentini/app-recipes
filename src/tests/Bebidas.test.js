@@ -1,11 +1,11 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
-import Bebidas from '../pages/Bebidas';
+import React from 'react';
+import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import mockBebidas, { categoryDrink } from '../mocks/bebidas';
-import { act } from 'react-dom/test-utils';
+import Bebidas from '../pages/Bebidas';
+import renderWithRouter from './renderWithRouter';
 
 describe('', () => {
   it('Verifica component Bebidas', async () => {

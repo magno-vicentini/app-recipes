@@ -1,11 +1,11 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
-import Comidas from '../pages/Comidas';
+import React from 'react';
+import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import mockComida, { categoryFood } from '../mocks/comidas';
-import { act } from 'react-dom/test-utils';
+import Comidas from '../pages/Comidas';
+import renderWithRouter from './renderWithRouter';
 
 describe('', () => {
   it('Verifica component Comidas', async () => {

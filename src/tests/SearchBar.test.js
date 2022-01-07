@@ -1,10 +1,10 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import React from 'react';
 import SearchBar from '../components/SearchBar';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import mockComida from '../mocks/comidas';
+import renderWithRouter from './renderWithRouter';
 
 const dataSearchInput = 'search-input';
 const dataTestRdIngredient = 'ingredient-search-radio';

@@ -1,8 +1,8 @@
-import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import React from 'react';
 import Login from '../pages/Login';
+import renderWithRouter from './renderWithRouter';
 
 const dataTestinputEmail = 'email-input';
 const dataTestinputPassword = 'password-input';

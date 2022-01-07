@@ -1,9 +1,9 @@
-import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import renderWithRouter from './renderWithRouter';
+import React from 'react';
 import Button from '../components/Recipe_Details/HeaderRecipe/Buttons';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
+import renderWithRouter from './renderWithRouter';
 
 let isFavorite = false;
 

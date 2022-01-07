@@ -1,6 +1,6 @@
-import { fetchDrinkApi, fetchMealApi, fetchRecipe } from "../services/fetchAPI";
-import mockComida from '../mocks/comidas';
 import mockBebidas from '../mocks/bebidas';
+import mockComida from '../mocks/comidas';
+import { fetchDrinkApi, fetchMealApi, fetchRecipe } from "../services/fetchAPI";
 
 describe('Verifica FetchApi', () => {
   it('Verifica FetchApi fetchMealApi', async () => {
