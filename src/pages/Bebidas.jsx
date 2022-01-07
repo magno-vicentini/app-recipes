@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
@@ -6,9 +7,10 @@ import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import useCategoryDrinks from '../hooks/useCategoryDrinks';
 
 function Bebidas() {
+  const searchFilter = 'search.php?s=';
   const [twelveDrinks, setTwelveDrinks] = useState([]);
   const [drinksCategories, setDrinksCategories] = useState([]);
-  const [filterUsed, setFilterUsed] = useState('search.php?s=');
+  const [filterUsed, setFilterUsed] = useState(searchFilter);
   const TWELVE = 12;
   const FIVE = 5;
 
@@ -51,18 +53,30 @@ function Bebidas() {
           <button
             data-testid={ `${drink.strCategory}-category-filter` }
             type="button"
-            onClick={ () => setFilterUsed(`filter.php?c=${drink.strCategory}`) }
+            onClick={ () => ((filterUsed === searchFilter
+              || filterUsed !== `filter.php?c=${drink.strCategory}`)
+              ? setFilterUsed(`filter.php?c=${drink.strCategory}`)
+              : setFilterUsed(searchFilter)) }
             key={ drink.strCategory }
           >
             {drink.strCategory}
           </button>
         ))
       }
+      <button
+        data-testid="All-category-filter"
+        type="button"
+        onClick={ () => setFilterUsed(searchFilter) }
+      >
+        All
+      </button>
       {twelveDrinks.map((food, index) => (
-        <div key={ food.idDrink } data-testid={ `${index}-recipe-card` }>
-          <img src={ food.strDrinkThumb } alt="" data-testid={ `${index}-card-img` } />
-          <p data-testid={ `${index}-card-name` }>{food.strDrink}</p>
-        </div>
+        <Link key={ food.idDrink } to={ `/bebidas/${food.idDrink}` }>
+          <div data-testid={ `${index}-recipe-card` }>
+            <img src={ food.strDrinkThumb } alt="" data-testid={ `${index}-card-img` } />
+            <p data-testid={ `${index}-card-name` }>{food.strDrink}</p>
+          </div>
+        </Link>
       ))}
 
       <Footer />

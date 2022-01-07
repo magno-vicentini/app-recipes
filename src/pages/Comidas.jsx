@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -7,9 +8,10 @@ import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import useCategoryMeals from '../hooks/useCategoryMeals';
 
 function Comidas() {
+  const searchFilter = 'search.php?s=';
   const [twelveFoods, setTwelveFoods] = useState([]);
   const [mealsCategories, setMealsCategories] = useState([]);
-  const [filterUsed, setFilterUsed] = useState('search.php?s=');
+  const [filterUsed, setFilterUsed] = useState(searchFilter);
   const FIVE = 5;
   const TWELVE = 12;
 
@@ -50,18 +52,30 @@ function Comidas() {
           <button
             data-testid={ `${meal.strCategory}-category-filter` }
             type="button"
-            onClick={ () => setFilterUsed(`filter.php?c=${meal.strCategory}`) }
+            onClick={ () => ((filterUsed === searchFilter
+              || filterUsed !== `filter.php?c=${meal.strCategory}`)
+              ? setFilterUsed(`filter.php?c=${meal.strCategory}`)
+              : setFilterUsed(searchFilter)) }
             key={ meal.strCategory }
           >
             {meal.strCategory}
           </button>
         ))
       }
+      <button
+        data-testid="All-category-filter"
+        type="button"
+        onClick={ () => setFilterUsed(searchFilter) }
+      >
+        All
+      </button>
       {twelveFoods.map((food, index) => (
-        <div key={ food.idMeal } data-testid={ `${index}-recipe-card` }>
-          <img src={ food.strMealThumb } alt="" data-testid={ `${index}-card-img` } />
-          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-        </div>
+        <Link key={ food.idMeal } to={ `/comidas/${food.idMeal}` }>
+          <div data-testid={ `${index}-recipe-card` }>
+            <img src={ food.strMealThumb } alt="" data-testid={ `${index}-card-img` } />
+            <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
+          </div>
+        </Link>
       ))}
       <Footer />
     </div>
