@@ -31,6 +31,7 @@ function Bebidas() {
           if (i < TWELVE) {
             return (
               <ResultCard
+                type="recipe"
                 id={ e.idDrink }
                 index={ i }
                 key={ i }

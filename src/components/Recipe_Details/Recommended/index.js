@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ResultCard from '../../ResultCard';
+import './style.css';
 
-export default function Recommended({ recipes }) {
+export default function Recommended({ recipes, gender }) {
   const SIX = 6;
   return (
     <div className="recommended-container">
@@ -12,12 +13,12 @@ export default function Recommended({ recipes }) {
           if (i < SIX) {
             return (
               <ResultCard
-                data-testid={ `${i}-recomendation-card` }
-                id={ e.idMeal }
+                type="recomendation"
+                id={ gender === 'meals' ? e.idMeal : e.idDrink }
                 index={ i }
                 key={ i }
-                image={ e.strMealThumb }
-                name={ e.strMeal }
+                image={ gender === 'meals' ? e.strMealThumb : e.strDrinkThumb }
+                name={ gender === 'meals' ? e.strMeal : e.strDrink }
               />
             );
           }
@@ -32,4 +33,5 @@ Recommended.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.shape(
     {},
   )).isRequired,
+  gender: PropTypes.string.isRequired,
 };

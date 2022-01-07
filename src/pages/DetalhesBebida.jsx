@@ -4,19 +4,24 @@ import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Ingredients from '../components/Recipe_Details/Ingredients';
 import Instructions from '../components/Recipe_Details/Instructions';
 import Recommended from '../components/Recipe_Details/Recommended';
-import { fetchRecipe, fetchDrinkApi } from '../services/fetchAPI';
+import { fetchRecipe, fetchMealApi } from '../services/fetchAPI';
+import './style/Detalhes.css';
 
 function DetalhesBebida() {
   const TWENTY = 20;
+
   const [recommendeds, setRecommendeds] = useState([]);
+  const [showButton, setShowButton] = useState(true);
   const [recipe, setRecipe] = useState({});
   const [recipeIngredients, setRecipeIngredients] = useState([]);
   const [recipeMeasures, setRecipeMeasures] = useState([]);
+
   const { params } = useRouteMatch();
+
   const getRecipe = async () => {
-    const recommendedsResult = await fetchDrinkApi('s', '');
-    setRecommendeds(recommendedsResult.drinks);
-    const recipeObj = await fetchRecipe('food', params.id);
+    const recommendedsResult = await fetchMealApi('s', '');
+    setRecommendeds(recommendedsResult.meals);
+    const recipeObj = await fetchRecipe('drink', params.id);
     const recipeResult = recipeObj.drinks[0];
     setRecipe(recipeResult);
     const ingredients = [];
@@ -32,10 +37,32 @@ function DetalhesBebida() {
     setRecipeIngredients(ingredients);
     setRecipeMeasures(measures);
   };
+  const donedRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
   useEffect(() => {
     getRecipe();
   }, []);
+
+  useEffect(() => {
+    const thisRecipe = donedRecipes && donedRecipes.find((e) => e.id === params.id);
+    if (donedRecipes && thisRecipe) {
+      setShowButton(!showButton);
+    }
+  }, [donedRecipes]);
+
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   const obj = {
+  //     `${params.id}`: ,
+  //   };
+
+  //   const newDoneArray = [];
+  //   if (donedRecipes) {
+  //     newDoneArray.push(...donedRecipes);
+  //   }
+  //   newDoneArray.push(obj);
+  //   localStorage.setItem('doneRecipes', JSON.stringify(newDoneArray));
+  // };
 
   return (
     <div className="details-drink-container">
@@ -51,13 +78,17 @@ function DetalhesBebida() {
             measures={ recipeMeasures }
           />
           <Instructions instructionsText={ recipe.strInstructions } />
-          <Recommended recipes={ recommendeds } />
-          <button
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
+          <Recommended gender="meals" recipes={ recommendeds } />
+          { showButton && (
+            <button
+              className="btn-start-recipe"
+              type="button"
+              data-testid="start-recipe-btn"
+              // onClick={ handleClick }
+            >
+              Iniciar Receita
+            </button>
+          )}
         </div>
       )}
     </div>

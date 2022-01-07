@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import shareIcon from '../../../images/shareIcon.svg';
+import './style.css';
 
 export default function HeaderRecipe({ image, title, subtitle }) {
   const [isFavorite, setFavorite] = useState(false);
@@ -13,6 +14,7 @@ export default function HeaderRecipe({ image, title, subtitle }) {
   return (
     <div className="header-recipe-container">
       <img
+        className="header-img"
         data-testid="recipe-photo"
         src={ image }
         alt={ title }
