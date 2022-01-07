@@ -40,15 +40,60 @@ describe('Verifica component Button em HeaderRecipe', () => {
           typeRecipe={ ['Meal', 'comida'] }
           isFavorite={ isFavorite }
           setFavorite={ setFavorite }
+          renderTest={ true }
         />
       </AppDeReceitasProvider>
     );
 
-    // const btnShare = screen.getByTestId('share-btn');
+    const btnShare = screen.getByTestId('share-btn');
     const btnFavorite = screen.getByTestId('favorite-btn');
 
     expect(isFavorite).toBe(false);
     userEvent.click(btnFavorite);
     expect(isFavorite).toBe(true);
+
+    userEvent.click(btnShare);
+  });
+
+  it('Verifica buttons LocalStorage True', () => {
+    localStorage.setItem('favoriteRecipes', JSON.stringify(['pao']));
+    setFavorite(false);
+    renderWithRouter(
+      <AppDeReceitasProvider>
+        <Button 
+          typeRecipe={ ['Meal', 'comida'] }
+          isFavorite={ isFavorite }
+          setFavorite={ setFavorite }
+          renderTest={ true }
+        />
+      </AppDeReceitasProvider>
+    );
+
+    const btnFavorite = screen.getByTestId('favorite-btn');
+
+    expect(isFavorite).toBe(false);
+    userEvent.click(btnFavorite);
+    expect(isFavorite).toBe(true);
+  });
+
+  it('Verifica buttons LocalStorage false', () => {
+    localStorage.setItem('favoriteRecipes', JSON.stringify(['pao']));
+    setFavorite(true);
+    renderWithRouter(
+      <AppDeReceitasProvider>
+        <Button 
+          typeRecipe={ ['Meal', 'comida'] }
+          isFavorite={ isFavorite }
+          setFavorite={ setFavorite }
+          renderTest={ true }
+        />
+      </AppDeReceitasProvider>
+    );
+
+    const btnFavorite = screen.getByTestId('favorite-btn');
+
+    expect(isFavorite).toBe(true);
+    userEvent.click(btnFavorite);
+    expect(isFavorite).toBe(false);
   });
 });

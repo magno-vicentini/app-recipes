@@ -7,7 +7,7 @@ import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import shareIcon from '../../../images/shareIcon.svg';
 import AppDeReceitasContext from '../../../Context/AppDeReceitasContext';
 
-export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
+export default function Buttons({ typeRecipe, isFavorite, setFavorite, renderTest = false }) {
   const TWO_SECONDS = 2000;
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const { params } = useRouteMatch();
@@ -48,8 +48,12 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
 
   const shareLink = (e) => {
     e.preventDefault();
-    const link = `http://localhost:3000${pathname}`;
-    navigator.clipboard.writeText(link);
+    let link = '';
+    if (renderTest) link = `http://localhost:3000`;
+    else {
+      link = `http://localhost:3000${pathname}`;
+      navigator.clipboard.writeText(link);
+    }    
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
