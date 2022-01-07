@@ -19,6 +19,7 @@ function Bebidas() {
       setTwelveDrinks(drinks.slice(0, TWELVE));
     };
     fetchDrinks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
 
   useCategoryDrinks(setDrinksCategories);

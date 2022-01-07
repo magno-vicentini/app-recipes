@@ -9,5 +9,6 @@ export default function useCategoryDrinks(setCategories) {
       setCategories(result.drinks);
     };
     fetchDrinks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

@@ -20,6 +20,7 @@ function Comidas() {
       setTwelveFoods(meals.slice(0, TWELVE));
     };
     fetchMeals();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
 
   useCategoryMeals(setMealsCategories);

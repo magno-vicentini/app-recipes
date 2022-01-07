@@ -9,5 +9,6 @@ export default function useCategoryMeals(setCategories) {
       setCategories(result.meals);
     };
     fetchMeals();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }
