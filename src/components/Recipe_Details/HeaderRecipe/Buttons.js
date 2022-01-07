@@ -23,7 +23,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
       id: recipe[`id${mealOrDrink}`],
       type,
       area: recipe.strArea ? recipe.strArea : '',
-      category: recipe.strCategoty ? recipe.strCategoty : '',
+      category: recipe.strCategory ? recipe.strCategory : '',
       alcoholicOrNot: recipe.strAlcoholic ? recipe.strAlcoholic : '',
       name: recipe[`str${mealOrDrink}`],
       image: recipe[`str${mealOrDrink}Thumb`],
@@ -62,7 +62,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
         onClick={ shareLink }
         src={ shareIcon }
       >
-        <img src={ shareIcon } alt="share icon" />
+        <img className="icon-img" src={ shareIcon } alt="share icon" />
       </button>
       {isFavorite
         ? (
@@ -73,6 +73,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
             src={ blackHeartIcon }
           >
             <img
+              className="icon-img"
               src={ blackHeartIcon }
               alt="black heart"
             />
@@ -86,6 +87,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
             src={ whiteHeartIcon }
           >
             <img
+              className="icon-img"
               src={ whiteHeartIcon }
               alt="white heart"
             />
