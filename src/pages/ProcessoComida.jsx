@@ -46,6 +46,7 @@ function ProcessoComida() {
       />
       <IngredientsInProgress
         ingredients={ recipeIngredients }
+        type="meals"
       />
       <Instructions
         instructionsText={ recipe.strInstructions }
