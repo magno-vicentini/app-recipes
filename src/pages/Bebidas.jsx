@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import React from 'react';
-
-function Bebidas() {
-  const txt = 'Bebidas';
-  return (
-    <div className="Bebidas-content">
-      {txt}
-=======
-import React, { useContext } from 'react';
-=======
 import React, { useContext, useEffect, useState } from 'react';
->>>>>>> 1e849d84a8e369eab32f9054b98f1fe40f4c345c
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
@@ -44,7 +31,8 @@ function Bebidas() {
           if (i < TWELVE) {
             return (
               <ResultCard
-                drinkId={ e.idDrink }
+                type="recipe"
+                id={ e.idDrink }
                 index={ i }
                 key={ i }
                 image={ e.strDrinkThumb }
@@ -72,7 +60,6 @@ function Bebidas() {
         ))
       }
       <Footer />
->>>>>>> 674181e55b4e347dff248e3723c859af225ee6c1
     </div>
   );
 }
