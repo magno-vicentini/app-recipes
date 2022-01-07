@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../../../images/blackHeartIcon.svg';
-import shareIcon from '../../../images/shareIcon.svg';
 import './style.css';
+import Buttons from './Buttons';
 
-export default function HeaderRecipe({ image, title, subtitle }) {
+export default function HeaderRecipe({ image, title, subtitle, typeRecipe }) {
   const [isFavorite, setFavorite] = useState(false);
-  const toggleFavorite = () => {
-    setFavorite(!isFavorite);
+
+  const { params } = useRouteMatch();
+
+  const testFavorite = async () => {
+    const favoriteRecipes = await JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (favoriteRecipes && favoriteRecipes.find((e) => e.id === params.id)) {
+      setFavorite(true);
+    } else {
+      setFavorite(false);
+    }
   };
+
+  useEffect(() => {
+    testFavorite();
+  }, []);
 
   return (
     <div className="header-recipe-container">
@@ -30,46 +41,26 @@ export default function HeaderRecipe({ image, title, subtitle }) {
         >
           { subtitle }
         </h4>
-        <div className="icons-content">
-          <button
-            type="button"
-            data-testid="share-btn"
-          >
-            <img src={ shareIcon } alt="share icon" />
-          </button>
-          {isFavorite
-            ? (
-              <button
-                type="button"
-                onClick={ toggleFavorite }
-                data-testid="favorite-btn"
-              >
-                <img
-                  src={ blackHeartIcon }
-                  alt="black heart"
-                />
-              </button>
-            )
-            : (
-              <button
-                type="button"
-                onClick={ toggleFavorite }
-                data-testid="favorite-btn"
-              >
-                <img
-                  src={ whiteHeartIcon }
-                  alt="white heart"
-                />
-              </button>
-            )}
-        </div>
+        <Buttons
+          typeRecipe={ typeRecipe }
+          isFavorite={ isFavorite }
+          setFavorite={ setFavorite }
+        />
       </div>
     </div>
   );
 }
 
 HeaderRecipe.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  typeRecipe: PropTypes.arrayOf(PropTypes.string),
+};
+
+HeaderRecipe.defaultProps = {
+  image: '',
+  title: '',
+  subtitle: '',
+  typeRecipe: [''],
 };

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useRouteMatch, useHistory } from 'react-router-dom';
 import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Ingredients from '../components/Recipe_Details/Ingredients';
 import Instructions from '../components/Recipe_Details/Instructions';
 import Recommended from '../components/Recipe_Details/Recommended';
 import { fetchRecipe, fetchMealApi } from '../services/fetchAPI';
+import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import './style/Detalhes.css';
 
 function DetalhesBebida() {
@@ -13,10 +14,12 @@ function DetalhesBebida() {
   const [recommendeds, setRecommendeds] = useState([]);
   const [showButton, setShowButton] = useState(true);
   const [buttomText, setButtomText] = useState('Iniciar Receita');
-  const [recipe, setRecipe] = useState({});
   const [recipeIngredients, setRecipeIngredients] = useState([]);
 
+  const { recipe, setRecipe } = useContext(AppDeReceitasContext);
+
   const { params } = useRouteMatch();
+  const { replace } = useHistory();
 
   const getRecipe = async () => {
     const recommendedsResult = await fetchMealApi('s', '');
@@ -64,8 +67,8 @@ function DetalhesBebida() {
         [key]: recipeIngredients,
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgress));
-      setButtomText('Continuar Receita');
     }
+    replace(`./${params.id}/in-progress`);
   };
 
   return (
@@ -73,6 +76,7 @@ function DetalhesBebida() {
       {recipe !== {} && (
         <div className="details-food-content">
           <HeaderRecipe
+            typeRecipe={ ['Drink', 'bebida'] }
             image={ recipe.strDrinkThumb }
             title={ recipe.strDrink }
             subtitle={ `${recipe.strCategory} - ${recipe.strAlcoholic}` }

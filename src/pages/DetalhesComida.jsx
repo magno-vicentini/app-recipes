@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Ingredients from '../components/Recipe_Details/Ingredients';
 import Instructions from '../components/Recipe_Details/Instructions';
 import Video from '../components/Recipe_Details/Video';
 import Recommended from '../components/Recipe_Details/Recommended';
 import { fetchRecipe, fetchDrinkApi } from '../services/fetchAPI';
+import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import './style/Detalhes.css';
 
 function DetalhesComida() {
@@ -14,10 +15,12 @@ function DetalhesComida() {
   const [recommendeds, setRecommendeds] = useState([]);
   const [buttomText, setButtomText] = useState('Iniciar Receita');
   const [showButton, setShowButton] = useState(true);
-  const [recipe, setRecipe] = useState({});
   const [recipeIngredients, setRecipeIngredients] = useState([]);
 
   const { params } = useRouteMatch();
+  const { replace } = useHistory();
+
+  const { recipe, setRecipe } = useContext(AppDeReceitasContext);
 
   const getRecipe = async () => {
     const recommendedsResult = await fetchDrinkApi('s', '');
@@ -65,8 +68,8 @@ function DetalhesComida() {
         [key]: recipeIngredients,
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgress));
-      setButtomText('Continuar Receita');
     }
+    replace(`./${params.id}/in-progress`);
   };
 
   return (
@@ -74,6 +77,7 @@ function DetalhesComida() {
       {recipe !== {} && (
         <div className="details-food-content">
           <HeaderRecipe
+            typeRecipe={ ['Meal', 'comida'] }
             image={ recipe.strMealThumb }
             title={ recipe.strMeal }
             subtitle={ recipe.strCategory }

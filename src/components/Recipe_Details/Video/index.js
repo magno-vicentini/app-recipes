@@ -36,5 +36,9 @@ export default function Video({ link }) {
 }
 
 Video.propTypes = {
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
+};
+
+Video.defaultProps = {
+  link: '',
 };

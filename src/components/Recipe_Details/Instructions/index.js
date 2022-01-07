@@ -17,5 +17,9 @@ export default function Instructions({ instructionsText }) {
 }
 
 Instructions.propTypes = {
-  instructionsText: PropTypes.string.isRequired,
+  instructionsText: PropTypes.string,
+};
+
+Instructions.defaultProps = {
+  instructionsText: '',
 };
