@@ -34,7 +34,8 @@ function Comidas() {
           if (i < TWELVE) {
             return (
               <ResultCard
-                mealId={ e.idMeal }
+                type="recipe"
+                id={ e.idMeal }
                 index={ i }
                 key={ i }
                 image={ e.strMealThumb }

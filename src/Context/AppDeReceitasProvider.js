@@ -4,6 +4,7 @@ import AppDeReceitasContext from './AppDeReceitasContext';
 
 const AppDeReceitasProveider = ({ children }) => {
   const [filter, setFilter] = useState('i');
+  const [recipe, setRecipe] = useState({});
   const [searchInput, setSearchInput] = useState('');
   const [render, setRender] = useState([]);
   const handleRadioChange = ({ target }) => {
@@ -19,6 +20,8 @@ const AppDeReceitasProveider = ({ children }) => {
     }
   };
   const context = {
+    recipe,
+    setRecipe,
     setRender,
     render,
     handleRadioChange,
