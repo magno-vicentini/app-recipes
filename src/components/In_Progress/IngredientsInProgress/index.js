@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
 import LabelIngredient from './LabelIngredient';
 
-export default function IngredientsInProgress({ ingredients, type }) {
+export default function IngredientsInProgress({
+  ingredients,
+  type,
+  setCheckeds }) {
   const [inProgressRecipes, setInProgressRecipes] = useState([]);
 
-  const gatInProgressRecipes = async () => {
+  const { params: { id } } = useRouteMatch();
+
+  const getInProgressRecipes = async () => {
     const getInProgress = await JSON.parse(localStorage.getItem('inProgressRecipes'));
-    setInProgressRecipes(getInProgress);
+    if (getInProgress) {
+      setInProgressRecipes(getInProgress);
+    } else {
+      setInProgressRecipes({ [type]: { [id]: [] } });
+    }
+    if (getInProgress[type][id]) {
+      setCheckeds(getInProgress[type][id].length);
+    } else {
+      setCheckeds(0);
+    }
   };
 
   useEffect(() => {
-    gatInProgressRecipes();
+    getInProgressRecipes();
   }, []);
 
   return (
@@ -30,6 +45,7 @@ export default function IngredientsInProgress({ ingredients, type }) {
                 inProgressRecipes={ inProgressRecipes }
                 type={ type }
                 setInProgressRecipes={ setInProgressRecipes }
+                setCheckeds={ setCheckeds }
               />
             </li>
           ))}
@@ -42,4 +58,5 @@ export default function IngredientsInProgress({ ingredients, type }) {
 IngredientsInProgress.propTypes = {
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string.isRequired,
+  setCheckeds: PropTypes.func.isRequired,
 };

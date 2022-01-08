@@ -7,33 +7,34 @@ export default function LabelIngredient({
   inProgressRecipes,
   type,
   setInProgressRecipes,
+  setCheckeds,
 }) {
   const [isChecked, setChecked] = useState(false);
 
   const { params: { id } } = useRouteMatch();
 
-  const testCheked = () => {
-    if (inProgressRecipes
-      && inProgressRecipes[type][id].find((ingredient) => ingredient === e)) {
-      setChecked(true);
-    } else {
-      setChecked(false);
+  const testCheked = (inProgress) => {
+    if (inProgress[type][id].find((ingredient) => ingredient === e)) {
+      return true;
     }
+    return false;
   };
 
   const gatInProgressRecipes = async () => {
     const getInProgress = await JSON.parse(localStorage.getItem('inProgressRecipes'));
-    setInProgressRecipes(getInProgress);
+    if (getInProgress) {
+      await setInProgressRecipes(getInProgress);
+    } else {
+      await setInProgressRecipes({ [type]: { [id]: [] } });
+    }
   };
 
   useEffect(() => {
-    testCheked();
     gatInProgressRecipes();
   }, []);
 
   const handleClick = ({ target: { value } }) => {
-    if (inProgressRecipes
-      && !inProgressRecipes[type][id].find((ingredient) => ingredient === e)) {
+    if (!inProgressRecipes[type][id].find((ingredient) => ingredient === e)) {
       inProgressRecipes[type][id] = [...inProgressRecipes[type][id], value];
     } else {
       const index = inProgressRecipes[type][id].indexOf(value);
@@ -41,20 +42,36 @@ export default function LabelIngredient({
     }
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     setChecked(!isChecked);
+    setCheckeds(inProgressRecipes[type][id].length);
   };
 
   return (
-    <label htmlFor={ e }>
-      <input
-        type="checkbox"
-        id={ e }
-        name={ e }
-        value={ e }
-        checked={ isChecked }
-        onChange={ handleClick }
-      />
-      <h4 className="ingredient-name">{e}</h4>
-    </label>
+    !testCheked(inProgressRecipes)
+      ? (
+        <label htmlFor={ e }>
+          <input
+            type="checkbox"
+            id={ e }
+            name={ e }
+            onChange={ handleClick }
+            value={ e }
+          />
+          <h4 className="ingredient-name">{e}</h4>
+        </label>
+      )
+      : (
+        <label htmlFor={ e }>
+          <input
+            type="checkbox"
+            id={ e }
+            name={ e }
+            onChange={ handleClick }
+            value={ e }
+            checked
+          />
+          <h4 className="ingredient-name">{e}</h4>
+        </label>
+      )
   );
 }
 
@@ -63,6 +80,7 @@ LabelIngredient.propTypes = {
   inProgressRecipes: PropTypes.shape([{}]),
   type: PropTypes.string,
   setInProgressRecipes: PropTypes.func.isRequired,
+  setCheckeds: PropTypes.func.isRequired,
 };
 
 LabelIngredient.defaultProps = {
