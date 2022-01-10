@@ -1,22 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import shareIcon from '../../../../images/shareIcon.svg';
 import blackHeartIcon from '../../../../images/blackHeartIcon.svg';
 import AppDeReceitasContext from '../../../../Context/AppDeReceitasContext';
 
 export default function Buttons({ index, id, type }) {
-  // const TWO_SECONDS = 2000;
+  const TWO_SECONDS = 2000;
   const { favoriteRecipes,
     setFavoriteRecipes } = useContext(AppDeReceitasContext);
 
   const [showIsCopy, setShowIsCopy] = useState(false);
+  const timeOutRef = useRef();
 
   const shareButton = (e) => {
     e.preventDefault();
     const link = `http://localhost:3000/${type}s/${id}`;
     navigator.clipboard.writeText(link);
     setShowIsCopy(true);
-    // setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
+    timeOutRef.current = setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
 
   const unFavoriteButton = (e) => {
@@ -25,6 +26,10 @@ export default function Buttons({ index, id, type }) {
     setFavoriteRecipes(newFavs);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavs));
   };
+
+  useEffect(() => () => {
+    clearTimeout(timeOutRef.current);
+  }, []);
 
   return (
     <div className="favorite-card-buttons">
