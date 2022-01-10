@@ -22,9 +22,10 @@ function DetalhesBebida() {
   const { replace } = useHistory();
 
   const getRecipe = async () => {
+    const { id } = params;
     const recommendedsResult = await fetchMealApi('s', '');
     setRecommendeds(recommendedsResult.meals);
-    const recipeObj = await fetchRecipe('drink', params.id);
+    const recipeObj = await fetchRecipe('drink', id);
     const recipeResult = recipeObj.drinks[0];
     setRecipe(recipeResult);
     const ingredients = [];
@@ -60,11 +61,12 @@ function DetalhesBebida() {
   const handleClick = (e) => {
     e.preventDefault();
     if (buttomText === 'Iniciar Receita') {
-      const newInProgress = { ...inProgressRecipes };
+      const testInProgress = inProgressRecipes || [];
+      const newInProgress = { ...testInProgress };
       const key = params.id;
       newInProgress.cocktails = {
         ...newInProgress.cocktails,
-        [key]: recipeIngredients,
+        [key]: [],
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgress));
     }

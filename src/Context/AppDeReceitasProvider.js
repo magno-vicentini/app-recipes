@@ -7,6 +7,7 @@ import mockBebidas from '../mocks/bebidas';
 const AppDeReceitasProveider = ({ children, renderTest = '' }) => {
   const [filter, setFilter] = useState('i');
   const [recipe, setRecipe] = useState({});
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [render, setRender] = useState([]);
 
@@ -29,6 +30,8 @@ const AppDeReceitasProveider = ({ children, renderTest = '' }) => {
   };
   const context = {
     recipe,
+    favoriteRecipes,
+    setFavoriteRecipes,
     setRecipe,
     setRender,
     render,
