@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
@@ -9,44 +9,29 @@ import useCategoryMeals from '../hooks/useCategoryMeals';
 
 function Comidas() {
   const searchFilter = 'search.php?s=';
-  const [twelveFoods, setTwelveFoods] = useState([]);
   const [mealsCategories, setMealsCategories] = useState([]);
   const [filterUsed, setFilterUsed] = useState(searchFilter);
   const FIVE = 5;
   const TWELVE = 12;
 
+  const { render, setRender } = useContext(AppDeReceitasContext);
+
   const URL = `https://www.themealdb.com/api/json/v1/1/${filterUsed}`;
+  const fetchMeals = async () => {
+    const { meals } = await fetch(URL).then((response) => response.json());
+    setRender(meals);
+  };
+
   useEffect(() => {
-    const fetchMeals = async () => {
-      const { meals } = await fetch(URL).then((response) => response.json());
-      setTwelveFoods(meals.slice(0, TWELVE));
-    };
     fetchMeals();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
 
   useCategoryMeals(setMealsCategories);
-  const { render } = useContext(AppDeReceitasContext);
 
   return (
     <div>
       <Header titlePage="Comidas" />
-      {render.length > 0
-        && render.map((e, i) => {
-          if (i < TWELVE) {
-            return (
-              <ResultCard
-                type="recipe"
-                id={ e.idMeal }
-                index={ i }
-                key={ i }
-                image={ e.strMealThumb }
-                name={ e.strMeal }
-              />
-            );
-          }
-          return ('');
-        })}
       {
         mealsCategories.slice(0, FIVE).map((meal) => (
           <button
@@ -69,14 +54,23 @@ function Comidas() {
       >
         All
       </button>
-      {twelveFoods.map((food, index) => (
-        <Link key={ food.idMeal } to={ `/comidas/${food.idMeal}` }>
-          <div data-testid={ `${index}-recipe-card` }>
-            <img src={ food.strMealThumb } alt="" data-testid={ `${index}-card-img` } />
-            <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-          </div>
-        </Link>
-      ))}
+      {render.length > 0
+        && render.map((e, i) => {
+          if (i < TWELVE) {
+            return (
+              <Link key={ i } to={ `/comidas/${e.idMeal}` }>
+                <ResultCard
+                  type="recipe"
+                  id={ e.idMeal }
+                  index={ i }
+                  image={ e.strMealThumb }
+                  name={ e.strMeal }
+                />
+              </Link>
+            );
+          }
+          return ('');
+        })}
       <Footer />
     </div>
   );
