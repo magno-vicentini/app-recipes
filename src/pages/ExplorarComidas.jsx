@@ -1,9 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function ExplorarComidas() {
+  const [idMealRandom, setIdMealRandom] = useState();
+
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/comidas/:${idMealRandom}`);
+  };
+
+  const fetchMealRandom = async () => {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    const result = await response.json();
+    setIdMealRandom(result.meals[0].idMeal);
+  };
+
+  useEffect(() => {
+    fetchMealRandom();
+  });
+
   return (
     <div className="ExplorarComidas-content">
       <Header showSearch={ false } titlePage="Explorar Comidas" />
@@ -26,6 +44,7 @@ function ExplorarComidas() {
       <button
         data-testid="explore-surprise"
         type="button"
+        onClick={ handleClick }
       >
         Me Surpreenda!
       </button>
