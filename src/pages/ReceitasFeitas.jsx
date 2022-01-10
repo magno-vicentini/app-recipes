@@ -48,7 +48,8 @@ function ReceitasFeitas() {
       >
         Drinks
       </button>
-      {recipesFiltered.map((recipe, index) => {
+      {recipesFiltered
+      && (recipesFiltered.map((recipe, index) => {
         const pathDetail = `/${recipe.type}s/${recipe.id}`;
         return (
           <div key={ recipe.id }>
@@ -109,7 +110,7 @@ function ReceitasFeitas() {
           </div>
 
         );
-      })}
+      }))}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe.skip('Done recipes screen', () => {
+describe('Done recipes screen', () => {
   const doneRecipes = [
     {
       id: '52771',
@@ -41,7 +41,7 @@ describe.skip('Done recipes screen', () => {
   });
 
   describe('54 - Implemente os elementos da tela de receitas feitas respeitando os atributos descritos no protótipo', () => {
-    it.skip('Todos os data-testids estão disponíveis', () => {
+    it('Todos os data-testids estão disponíveis', () => {
       cy.get('[data-testid="filter-by-all-btn"]');
       cy.get('[data-testid="filter-by-food-btn"]');
       cy.get('[data-testid="filter-by-drink-btn"]');
