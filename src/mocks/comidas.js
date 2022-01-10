@@ -84,4 +84,10 @@ export const categoryFood = [
   { strCategory: 'azeite' }
 ]
 
+export const ingradados = [
+  'ovo',
+  'carne',
+  'salada',
+]
+
 export default mockComida;

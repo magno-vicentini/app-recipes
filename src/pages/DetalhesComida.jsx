@@ -7,9 +7,11 @@ import Video from '../components/Recipe_Details/Video';
 import Recommended from '../components/Recipe_Details/Recommended';
 import { fetchRecipe, fetchDrinkApi } from '../services/fetchAPI';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
+import mockComida, { ingradados } from '../mocks/comidas';
+import mockBebidas from '../mocks/bebidas';
 import './style/Detalhes.css';
 
-function DetalhesComida() {
+function DetalhesComida({ renderTest = false }) {
   const TWENTY = 20;
 
   const [recommendeds, setRecommendeds] = useState([]);
@@ -44,6 +46,10 @@ function DetalhesComida() {
 
   useEffect(() => {
     getRecipe();
+    if (renderTest) {
+      setRecipe(mockComida[0]);
+      setRecipeIngredients(ingradados);
+    }
   }, []);
 
   useEffect(() => {

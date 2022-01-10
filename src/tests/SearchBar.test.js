@@ -50,27 +50,4 @@ describe('Verifica SearchBar', () => {
     expect(rdIngredient.checked).toBe(false);
     expect(rdName.checked).toBe(false);
   });
-
-  it.skip('Verifica Fetch Ingredients', async () => {
-    renderWithRouter(
-      <AppDeReceitasProvider>
-        <SearchBar />
-      </AppDeReceitasProvider>,
-    );
-
-    jest.spyOn(global, 'fetch');
-    global.fetch.mockResolvedValue({
-      json: jest.fn().mockResolvedValue(mockComida),
-    });
-
-    const inputSearch = screen.getByTestId(dataSearchInput);
-    const rdIngredient = screen.getByTestId(dataTestRdIngredient);
-    const btnRdSearch = screen.getByTestId(dataTestBtnRdSearch);
-
-    userEvent.type(inputSearch, 'bacon');
-    userEvent.click(rdIngredient);
-    userEvent.click(btnRdSearch);
-
-    
-  });
 });

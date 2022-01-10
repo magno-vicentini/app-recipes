@@ -3,13 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import Ingredients from '../components/Recipe_Details/Ingredients';
 import renderWithRouter from './renderWithRouter';
-
-const ingradados = [
-  'ovo',
-  'carne',
-  'salada',
-]
-
+import { ingradados } from '../mocks/comidas';
 
 describe('Verifica component Button em HeaderRecipe', () => {
   it('Verifica component Button em HeaderRecipe', async () => {
