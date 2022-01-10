@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useRouteMatch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './style.css';
+import LabelIngredient from './LabelIngredient';
 
-export default function IngredientsInProgress({ ingredients }) {
+export default function IngredientsInProgress({
+  ingredients,
+  type,
+  setCheckeds }) {
   const [inProgressRecipes, setInProgressRecipes] = useState([]);
 
-  const gatInProgressRecipes = async () => {
-    const getInProgress = await JSON.parse(localStorage.getItem('inProgressRecipes'));
-    setInProgressRecipes(getInProgress);
-  };
+  const { params: { id } } = useRouteMatch();
 
-  const { params } = useRouteMatch();
+  const getInProgressRecipes = async () => {
+    const getInProgress = await JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (getInProgress) {
+      setInProgressRecipes(getInProgress);
+    } else {
+      setInProgressRecipes({ [type]: { [id]: [] } });
+    }
+    if (getInProgress[type][id]) {
+      setCheckeds(getInProgress[type][id].length);
+    } else {
+      setCheckeds(0);
+    }
+  };
 
   useEffect(() => {
-    gatInProgressRecipes();
+    getInProgressRecipes();
   }, []);
-
-  const testChecked = (e) => {
-    if (inProgressRecipes[params.id]) {
-      const test = inProgressRecipes[params.id].find((ingredient) => ingredient === e);
-      return (test);
-    }
-    return (false);
-  };
 
   return (
     <div className="ingredients-container">
@@ -34,15 +40,13 @@ export default function IngredientsInProgress({ ingredients }) {
               key={ i }
               data-testid={ `${i}-ingredient-step` }
             >
-              <label htmlFor={ e }>
-                <input
-                  type="checkbox"
-                  id={ e }
-                  name={ e }
-                  checked={ testChecked(e) }
-                />
-                <h4 className="ingredient-name">{e}</h4>
-              </label>
+              <LabelIngredient
+                e={ e }
+                inProgressRecipes={ inProgressRecipes }
+                type={ type }
+                setInProgressRecipes={ setInProgressRecipes }
+                setCheckeds={ setCheckeds }
+              />
             </li>
           ))}
         </ul>
@@ -53,4 +57,6 @@ export default function IngredientsInProgress({ ingredients }) {
 
 IngredientsInProgress.propTypes = {
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  type: PropTypes.string.isRequired,
+  setCheckeds: PropTypes.func.isRequired,
 };

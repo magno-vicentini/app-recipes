@@ -11,6 +11,7 @@ function ProcessoComida() {
   const TWENTY = 20;
 
   const [recipeIngredients, setRecipeIngredients] = useState([]);
+  const [checkeds, setCheckeds] = useState(0);
 
   const { params } = useRouteMatch();
 
@@ -46,11 +47,17 @@ function ProcessoComida() {
       />
       <IngredientsInProgress
         ingredients={ recipeIngredients }
+        type="meals"
+        checkeds={ checkeds }
+        setCheckeds={ setCheckeds }
       />
       <Instructions
         instructionsText={ recipe.strInstructions }
       />
-      <FinishRecipeButton />
+      <FinishRecipeButton
+        isAble={ recipeIngredients.length === checkeds }
+        type="Meal"
+      />
     </div>
   );
 }
