@@ -20,7 +20,7 @@ function ExplorarComidas() {
 
   useEffect(() => {
     fetchMealRandom();
-  });
+  }, []);
 
   return (
     <div className="ExplorarComidas-content">

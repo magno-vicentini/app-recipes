@@ -20,7 +20,8 @@ function ExplorarBebidas() {
 
   useEffect(() => {
     fetchDrinkRandom();
-  });
+  }, []);
+
   return (
     <div className="ExplorarBebidas-content">
       <Header showSearch={ false } titlePage="Explorar Bebidas" />
