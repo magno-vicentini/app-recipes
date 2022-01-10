@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Ingredients from '../components/Recipe_Details/Ingredients';
@@ -16,6 +16,11 @@ function DetalhesComida() {
   const [buttomText, setButtomText] = useState('Iniciar Receita');
   const [showButton, setShowButton] = useState(true);
   const [recipeIngredients, setRecipeIngredients] = useState([]);
+
+  const doneRecipes = useMemo(() => JSON.parse(localStorage.getItem('doneRecipes')), []);
+  const inProgressRecipes = useMemo(() => (
+    JSON.parse(localStorage.getItem('inProgressRecipes'))
+  ), []);
 
   const { params } = useRouteMatch();
   const { replace } = useHistory();
@@ -39,14 +44,9 @@ function DetalhesComida() {
     }
     setRecipeIngredients(ingredients);
   };
-  const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-  const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
   useEffect(() => {
     getRecipe();
-  }, []);
-
-  useEffect(() => {
     const thisRecipe = doneRecipes && doneRecipes.find((e) => e.id === params.id);
     if (thisRecipe) {
       setShowButton(!showButton);
@@ -56,7 +56,7 @@ function DetalhesComida() {
       && inProgressRecipes.meals[params.id]) {
       setButtomText('Continuar Receita');
     }
-  }, [doneRecipes, inProgressRecipes]);
+  }, []);
 
   const handleClick = (e) => {
     e.preventDefault();

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import clipboardCopy from 'clipboard-copy';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import shareIcon from '../../../images/shareIcon.svg';
@@ -46,7 +47,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
   const shareLink = (e) => {
     e.preventDefault();
     const link = `http://localhost:3000/${typeRecipe[1]}s/${params.id}`;
-    navigator.clipboard.writeText(link);
+    clipboardCopy(link);
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
