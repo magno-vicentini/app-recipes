@@ -22,9 +22,10 @@ function DetalhesBebida() {
   const { replace } = useHistory();
 
   const getRecipe = async () => {
+    const { id } = params;
     const recommendedsResult = await fetchMealApi('s', '');
     setRecommendeds(recommendedsResult.meals);
-    const recipeObj = await fetchRecipe('drink', params.id);
+    const recipeObj = await fetchRecipe('drink', id);
     const recipeResult = recipeObj.drinks[0];
     setRecipe(recipeResult);
     const ingredients = [];
