@@ -40,7 +40,8 @@ function ReceitasFavoritas() {
       <Header showSearch={ false } titlePage="Receitas Favoritas" />
       <Filters setFilter={ setFilter } />
       {
-        favoriteRecipes.length > 0
+        favoriteRecipes
+        && favoriteRecipes.length > 0
         && favoriteRecipes.map((favoriteRecipe, i) => {
           const subtitle = favoriteRecipe.type === 'comida'
             ? `${favoriteRecipe.area} - ${favoriteRecipe.category}`
