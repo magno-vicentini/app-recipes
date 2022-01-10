@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ShowCopy from './ShowCopy';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import shareIcon from '../../../images/shareIcon.svg';
@@ -91,7 +90,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
             />
           </button>
         )}
-      <ShowCopy showIsCopy={ showIsCopy } />
+      { showIsCopy && <p>Link copiado!</p> }
     </div>
   );
 }

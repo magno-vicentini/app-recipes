@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
@@ -13,8 +14,20 @@ function Comidas() {
   const FIVE = 5;
   const TWELVE = 12;
 
+  const { render, setRender } = useContext(AppDeReceitasContext);
+
+  const URL = `https://www.themealdb.com/api/json/v1/1/${filterUsed}`;
+  const fetchMeals = async () => {
+    const { meals } = await fetch(URL).then((response) => response.json());
+    setRender(meals);
+  };
+
+  useEffect(() => {
+    fetchMeals();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterUsed]);
+
   useCategoryMeals(setMealsCategories);
-  const { render } = useContext(AppDeReceitasContext);
 
   return (
     <div>
@@ -45,14 +58,15 @@ function Comidas() {
         && render.map((e, i) => {
           if (i < TWELVE) {
             return (
-              <ResultCard
-                type="recipe"
-                id={ e.idMeal }
-                index={ i }
-                key={ i }
-                image={ e.strMealThumb }
-                name={ e.strMeal }
-              />
+              <Link key={ i } to={ `/comidas/${e.idMeal}` }>
+                <ResultCard
+                  type="recipe"
+                  id={ e.idMeal }
+                  index={ i }
+                  image={ e.strMealThumb }
+                  name={ e.strMeal }
+                />
+              </Link>
             );
           }
           return ('');

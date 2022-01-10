@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import shareIcon from '../../../../images/shareIcon.svg';
 import blackHeartIcon from '../../../../images/blackHeartIcon.svg';
 import AppDeReceitasContext from '../../../../Context/AppDeReceitasContext';
-import ShowCopy from '../../../Recipe_Details/HeaderRecipe/ShowCopy';
 
 export default function Buttons({ index, id, type }) {
-  const TWO_SECONDS = 2000;
+  // const TWO_SECONDS = 2000;
   const { favoriteRecipes,
     setFavoriteRecipes } = useContext(AppDeReceitasContext);
 
@@ -17,7 +16,7 @@ export default function Buttons({ index, id, type }) {
     const link = `http://localhost:3000/${type}s/${id}`;
     navigator.clipboard.writeText(link);
     setShowIsCopy(true);
-    setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
+    // setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
 
   const unFavoriteButton = (e) => {
@@ -51,7 +50,7 @@ export default function Buttons({ index, id, type }) {
           alt="Favorite Icon"
         />
       </button>
-      <ShowCopy showIsCopy={ showIsCopy } />
+      {showIsCopy && <p>Link copiado!</p>}
     </div>
   );
 }
