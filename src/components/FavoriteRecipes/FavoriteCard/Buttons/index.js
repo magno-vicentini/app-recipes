@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import shareIcon from '../../../../images/shareIcon.svg';
 import blackHeartIcon from '../../../../images/blackHeartIcon.svg';
