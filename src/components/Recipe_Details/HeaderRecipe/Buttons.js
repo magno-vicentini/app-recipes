@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLocation, useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ShowCopy from './ShowCopy';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
@@ -13,8 +13,6 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
   const { params } = useRouteMatch();
 
   const [showIsCopy, setShowIsCopy] = useState(false);
-
-  const { pathname } = useLocation();
 
   const { recipe } = useContext(AppDeReceitasContext);
 
@@ -48,7 +46,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
 
   const shareLink = (e) => {
     e.preventDefault();
-    const link = `http://localhost:3000${pathname}`;
+    const link = `http://localhost:3000/${typeRecipe[1]}s/${params.id}`;
     navigator.clipboard.writeText(link);
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);

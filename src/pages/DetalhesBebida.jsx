@@ -60,11 +60,12 @@ function DetalhesBebida() {
   const handleClick = (e) => {
     e.preventDefault();
     if (buttomText === 'Iniciar Receita') {
-      const newInProgress = { ...inProgressRecipes };
+      const testInProgress = inProgressRecipes || [];
+      const newInProgress = { ...testInProgress };
       const key = params.id;
       newInProgress.cocktails = {
         ...newInProgress.cocktails,
-        [key]: recipeIngredients,
+        [key]: [],
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgress));
     }
