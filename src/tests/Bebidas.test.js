@@ -45,12 +45,22 @@ describe('', () => {
     const btnCategory4 = await screen.findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
     const btnCategory5 = await screen.findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
 
+    const btnAll = screen.getByTestId(`All-category-filter`);
+
     expect(btnCategory1).toBeInTheDocument();
     expect(btnCategory2).toBeInTheDocument();
     expect(btnCategory3).toBeInTheDocument();
     expect(btnCategory4).toBeInTheDocument();
     expect(btnCategory5).toBeInTheDocument();
+    expect(btnAll).toBeInTheDocument();
+
+    expect(btnCategory1).toBeInTheDocument();
 
     userEvent.click(btnCategory1);
+    userEvent.click(btnCategory2);
+    userEvent.click(btnCategory3);
+    userEvent.click(btnCategory4);
+    userEvent.click(btnCategory5);
+    userEvent.click(btnAll);
   })
 });
