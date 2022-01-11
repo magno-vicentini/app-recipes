@@ -19,6 +19,7 @@ import ProcessoComida from './pages/ProcessoComida';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import AppDeReceitasProveider from './Context/AppDeReceitasProvider';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -26,27 +27,28 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
-          <Route path="/comidas/:id/in-progress" component={ ProcessoComida } />
-          <Route path="/comidas/:id" component={ DetalhesComida } />
-          <Route path="/comidas" component={ Comidas } />
-          <Route path="/bebidas/:id/in-progress" component={ ProcessoBebida } />
-          <Route path="/bebidas/:id" component={ DetalhesBebida } />
-          <Route path="/bebidas" component={ Bebidas } />
-          <Route path="/explorar/comidas/area" component={ ComidasPorLocal } />
+          <Route exact path="/comidas/:id/in-progress" component={ ProcessoComida } />
+          <Route exact path="/comidas/:id" component={ DetalhesComida } />
+          <Route exact path="/comidas" component={ Comidas } />
+          <Route exact path="/bebidas/:id/in-progress" component={ ProcessoBebida } />
+          <Route exact path="/bebidas/:id" component={ DetalhesBebida } />
+          <Route exact path="/bebidas" component={ Bebidas } />
+          <Route exact path="/explorar/comidas/area" component={ ComidasPorLocal } />
           <Route
             path="/explorar/comidas/ingredientes"
             component={ ComidasPorIngredientes }
           />
-          <Route path="/explorar/comidas" component={ ExplorarComidas } />
+          <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
           <Route
             path="/explorar/bebidas/ingredientes"
             component={ BebidasPorIngredientes }
           />
-          <Route path="/explorar/bebidas" component={ ExplorarBebidas } />
-          <Route path="/explorar" component={ Explorar } />
-          <Route path="/perfil" component={ Perfil } />
-          <Route path="/receitas-feitas" component={ ReceitasFeitas } />
-          <Route path="/receitas-favoritas" component={ ReceitasFavoritas } />
+          <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
+          <Route exact path="/explorar" component={ Explorar } />
+          <Route exact path="/perfil" component={ Perfil } />
+          <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
+          <Route exact path="/receitas-favoritas" component={ ReceitasFavoritas } />
+          <Route path="*" component={ NotFound } />
         </Switch>
       </BrowserRouter>
     </AppDeReceitasProveider>

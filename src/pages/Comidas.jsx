@@ -58,7 +58,7 @@ function Comidas() {
       >
         All
       </button>
-      {render.length > 0
+      {render
         && render.map((e, i) => {
           if (i < TWELVE) {
             return (
