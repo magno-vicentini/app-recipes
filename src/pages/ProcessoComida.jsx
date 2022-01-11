@@ -5,10 +5,8 @@ import IngredientsInProgress from '../components/In_Progress/IngredientsInProgre
 import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Instructions from '../components/Recipe_Details/Instructions';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
-import { fetchRecipe } from '../services/fetchAPI';
-import mockComida from '../mocks/comidas';
 
-function ProcessoComida({ renderTest = false }) {
+function ProcessoComida() {
   const TWENTY = 20;
 
   const [recipeIngredients, setRecipeIngredients] = useState([]);
@@ -36,10 +34,6 @@ function ProcessoComida({ renderTest = false }) {
 
   useEffect(() => {
     getRecipe();
-    if (renderTest) {
-      setRecipe(mockComida[0]);
-      setRecipeIngredients([mockComida[0].strIngredient1]);
-    }
   }, []);
 
   return (
