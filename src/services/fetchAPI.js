@@ -2,6 +2,7 @@ const fetchDrinkApi = async (type, search) => {
   const filter = await type === 'i' ? 'filter' : 'search';
   const url = `https://www.thecocktaildb.com/api/json/v1/1/${filter}.php?${type}=${search}`;
   const response = await fetch(url);
+  console.log(response);
   const result = await response.json();
   return (result);
 };

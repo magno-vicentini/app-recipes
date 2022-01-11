@@ -1,20 +1,24 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import DetalhesComida from '../pages/DetalhesComida';
 import renderWithRouter from './renderWithRouter';
-import mockComida, { ingradados } from '../mocks/comidas';
-import fetchRecipe from '../services/fetchAPI';
+import { mockDrinks } from '../mocks/bebidas';
+import mockComida, { mockMeals } from '../mocks/comidas';
+import { fetchRecipe, fetchDrinkApi } from '../services/fetchAPI';
+
+jest.mock('../services/fetchAPI/');
 
 describe('Verifica DetalhesComida Page', () => {
-  jest.spyOn(fetchRecipe, 'fetchDrinkApi');
+  fetchDrinkApi.mockResolvedValue(mockDrinks);
+  fetchRecipe.mockResolvedValue(mockMeals);
   it('Verifica component DetalhesComida', async () => {
     await act(async () => {
       renderWithRouter(
         <AppDeReceitasProvider >
-          <DetalhesComida renderTest= { true } />
+          <DetalhesComida />
         </AppDeReceitasProvider>
       );
     })
@@ -23,49 +27,35 @@ describe('Verifica DetalhesComida Page', () => {
     expect(btnStartRecipe).toBeInTheDocument();
 
     userEvent.click(btnStartRecipe);    
-    
   });
 
-  it('Verifica component HeaderRecipe', async () => {
-    jest.spyOn(fetchRecipe, 'fetchDrinkApi');
-    
-    await act(async () => {
-      renderWithRouter(
-        <AppDeReceitasProvider >
-          <DetalhesComida renderTest= { true } />
-        </AppDeReceitasProvider>
-      );
-    })
+  it.skip('', () => {
+    const mockedFetch = (url) => {
+      switch(url){
+          case 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768':
+              return Promise.resolve({ json: jest.fn().mockResolvedValue(mockMeals) });
+        default: return url;
+      }
+    }
+    jest.spyOn(global, 'fetch').mockImplementation(mockedFetch)
+    console.log(fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768'))
+  });
 
-    const recipePhoto = screen.getByTestId('recipe-photo');
-    const recipeTitle = screen.getByTestId('recipe-title'); 
-    const recipeCategory = screen.getByTestId('recipe-category');
+  it('Verifica component HeaderRecipe',async () => {
+    renderWithRouter(
+      <AppDeReceitasProvider >
+        <DetalhesComida />
+      </AppDeReceitasProvider>
+    );
 
-    expect(recipePhoto).toBeInTheDocument();
-    expect(recipePhoto.src).toBe(mockComida[0].strMealThumb);
+    const recipeTitle = await screen.findByText(/Apple/i);
+    const recipePhoto = screen.getByTestId('recipe-photo'); 
+    const recipeCategory =  screen.getByTestId('recipe-category');
     expect(recipeTitle).toBeInTheDocument();
-    expect(recipeTitle.innerHTML).toBe(mockComida[0].strMeal);
+    expect(recipeTitle.innerHTML).toBe(mockComida[0].strMeal)
+    expect(recipePhoto.src).toBe(mockComida[0].strMealThumb);
     expect(recipeCategory).toBeInTheDocument();
     expect(recipeCategory.innerHTML).toBe(mockComida[0].strCategory);
-    
-  });
-
-  it('Verifica component Ingredient', async () => {
-    await act(async () => {
-      renderWithRouter(
-        <AppDeReceitasProvider >
-          <DetalhesComida renderTest= { true } />
-        </AppDeReceitasProvider>
-      );
-    })
-
-    const ingredientsName0 = screen.getByTestId('0-ingredient-name-and-measure');
-    const ingredientsName1 = screen.getByTestId('1-ingredient-name-and-measure');
-    const ingredientsName2 = screen.getByTestId('2-ingredient-name-and-measure');
-
-    expect(ingredientsName0.innerHTML).toBe(ingradados[0]);
-    expect(ingredientsName1.innerHTML).toBe(ingradados[1]);
-    expect(ingredientsName2.innerHTML).toBe(ingradados[2]);
     
   });
 });

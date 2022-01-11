@@ -4,6 +4,10 @@ const mockBebidas = [
     strDrink: 'A1',
     strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
     strCategory: 'Side',
+    strAlcoholic: 'none',
+    strIngredient1: 'digestive biscuit',
+    strMeasure1: '175g/6oz',
+    strInstruction: 'Preheat the oven',
   },
   {
     idDrink: '13501',
@@ -79,5 +83,20 @@ export const categoryDrink = [
   { strCategory: 'limonada' },
   { strCategory: 'pinga' }
 ]
+
+export const mockDrinks = {
+  drinks: [
+    {
+      idDrink: '17222',
+      strDrink: 'A1',
+      strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
+      strCategory: 'Side',
+      strAlcoholic: 'none',
+      strIngredient1: 'digestive biscuit',
+      strMeasure1: '175g/6oz',
+      strInstruction: 'Preheat the oven',
+    }
+  ]
+}
 
 export default mockBebidas;
