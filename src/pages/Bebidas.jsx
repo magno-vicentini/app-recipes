@@ -15,14 +15,18 @@ function Bebidas() {
 
   const URL = `https://www.thecocktaildb.com/api/json/v1/1/${filterUsed}`;
 
-  const { render, setRender } = useContext(AppDeReceitasContext);
+  const { render,
+    setRender,
+    isFilterByIngredient } = useContext(AppDeReceitasContext);
 
   const fetchDrinks = async () => {
     const { drinks } = await fetch(URL).then((response) => response.json());
     setRender(drinks);
   };
   useEffect(() => {
-    fetchDrinks();
+    if (!isFilterByIngredient) {
+      fetchDrinks();
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
 
@@ -53,7 +57,7 @@ function Bebidas() {
       >
         All
       </button>
-      {render.length > 0
+      {render
         && render.map((e, i) => {
           if (i < TWELVE) {
             return (

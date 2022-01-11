@@ -14,7 +14,9 @@ function Comidas() {
   const FIVE = 5;
   const TWELVE = 12;
 
-  const { render, setRender } = useContext(AppDeReceitasContext);
+  const { render,
+    setRender,
+    isFilterByIngredient } = useContext(AppDeReceitasContext);
 
   const URL = `https://www.themealdb.com/api/json/v1/1/${filterUsed}`;
   const fetchMeals = async () => {
@@ -23,7 +25,9 @@ function Comidas() {
   };
 
   useEffect(() => {
-    fetchMeals();
+    if (!isFilterByIngredient) {
+      fetchMeals();
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
 
