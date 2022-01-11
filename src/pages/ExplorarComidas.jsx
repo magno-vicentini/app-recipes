@@ -9,7 +9,7 @@ function ExplorarComidas() {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/comidas/:${idMealRandom}`);
+    history.push(`/comidas/${idMealRandom}`);
   };
 
   const fetchMealRandom = async () => {
