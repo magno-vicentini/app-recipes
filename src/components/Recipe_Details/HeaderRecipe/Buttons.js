@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ShowCopy from './ShowCopy';
+import clipboardCopy from 'clipboard-copy';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import shareIcon from '../../../images/shareIcon.svg';
@@ -50,8 +50,8 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite, renderTes
     if (renderTest) link = `http://localhost:3000`;
     else {
       const link = `http://localhost:3000/${typeRecipe[1]}s/${params.id}`;
-      navigator.clipboard.writeText(link);
-    }
+      clipboardCopy(link);
+    }    
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
@@ -95,7 +95,7 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite, renderTes
             />
           </button>
         )}
-      <ShowCopy showIsCopy={ showIsCopy } />
+      { showIsCopy && <p>Link copiado!</p> }
     </div>
   );
 }
