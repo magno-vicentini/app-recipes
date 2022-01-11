@@ -9,7 +9,7 @@ function ExplorarBebidas() {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/bebidas/:${idDrinkRandom}`);
+    history.push(`/bebidas/${idDrinkRandom}`);
   };
 
   const fetchDrinkRandom = async () => {
