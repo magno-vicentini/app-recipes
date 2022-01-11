@@ -4,6 +4,7 @@ import AppDeReceitasContext from './AppDeReceitasContext';
 
 const AppDeReceitasProveider = ({ children }) => {
   const [filter, setFilter] = useState('i');
+  const [isFilterByIngredient, setIsFilterByIngredient] = useState(false);
   const [recipe, setRecipe] = useState({});
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -21,6 +22,9 @@ const AppDeReceitasProveider = ({ children }) => {
     }
   };
   const context = {
+    isFilterByIngredient,
+    setIsFilterByIngredient,
+    setFilter,
     recipe,
     favoriteRecipes,
     setFavoriteRecipes,

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import clipboardCopy from 'clipboard-copy';
 import PropTypes from 'prop-types';
 import shareIcon from '../../../../images/shareIcon.svg';
 import blackHeartIcon from '../../../../images/blackHeartIcon.svg';
@@ -15,7 +16,7 @@ export default function Buttons({ index, id, type }) {
   const shareButton = (e) => {
     e.preventDefault();
     const link = `http://localhost:3000/${type}s/${id}`;
-    navigator.clipboard.writeText(link);
+    clipboardCopy(link);
     setShowIsCopy(true);
     timeOutRef.current = setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
