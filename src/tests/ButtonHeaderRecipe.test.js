@@ -6,9 +6,12 @@ import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import renderWithRouter from './renderWithRouter';
 
 let isFavorite = false;
-const btnFavoriteTest = 'favorite-btn'
+const btnFavoriteTest = 'favorite-btn';
 
-const setFavorite = (payload) => isFavorite = payload;
+const setFavorite = (payload) => {
+  isFavorite = payload;
+  return isFavorite;
+};
 
 describe.skip('Verifica component Button em HeaderRecipe', () => {
   it('Verifica component Button em HeaderRecipe', () => {

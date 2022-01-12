@@ -34,16 +34,21 @@ describe('', () => {
     await act(async () => {
       renderWithRouter(
         <AppDeReceitasProvider>
-          <Comidas renderTest={ true } />
+          <Comidas renderTest />
         </AppDeReceitasProvider>,
       );
     });
 
-    const btnCategory1 = await screen.findByTestId(`${categoryFood[0].strCategory}-category-filter`);
-    const btnCategory2 = await screen.findByTestId(`${categoryFood[1].strCategory}-category-filter`);
-    const btnCategory3 = await screen.findByTestId(`${categoryFood[2].strCategory}-category-filter`);
-    const btnCategory4 = await screen.findByTestId(`${categoryFood[3].strCategory}-category-filter`);
-    const btnCategory5 = await screen.findByTestId(`${categoryFood[3].strCategory}-category-filter`);
+    const btnCategory1 = await screen
+      .findByTestId(`${categoryFood[0].strCategory}-category-filter`);
+    const btnCategory2 = await screen
+      .findByTestId(`${categoryFood[1].strCategory}-category-filter`);
+    const btnCategory3 = await screen
+      .findByTestId(`${categoryFood[2].strCategory}-category-filter`);
+    const btnCategory4 = await screen
+      .findByTestId(`${categoryFood[3].strCategory}-category-filter`);
+    const btnCategory5 = await screen
+      .findByTestId(`${categoryFood[3].strCategory}-category-filter`);
 
     const btnAll = screen.getByTestId(`All-category-filter`);
 
@@ -62,5 +67,5 @@ describe('', () => {
     userEvent.click(btnCategory4);
     userEvent.click(btnCategory5);
     userEvent.click(btnAll);
-  })
+  });
 });

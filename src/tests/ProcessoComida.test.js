@@ -1,13 +1,13 @@
 // import { screen } from '@testing-library/react';
-import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import React from 'react';
+import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import ProcessoComida from '../pages/ProcessoComida';
 import renderWithRouter from './renderWithRouter';
 /* import IngredientsInProgress from '../components/In_Progress/IngredientsInProgress';
 import mockComida, { mockMeals } from '../mocks/comidas';
 import { fetchRecipe } from '../services/fetchAPI'; */
 
-//jest.mock('../services/fetchAPI/');
+// jest.mock('../services/fetchAPI/');
 
 describe.skip('Testes ProcessoComida Page', () => {
   // fetchRecipe.mockResolvedValue(mockMeals);

@@ -45,7 +45,7 @@ describe('Verifica FetchApi', () => {
 
     const fetchTwo = await fetchRecipe('drink', '456');
     expect(fetchTwo).toBe(mockComida);
-  });  
+  });
 });
 
 describe('Verifica Mais FetchApi', () => {

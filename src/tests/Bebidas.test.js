@@ -18,15 +18,15 @@ describe('', () => {
     });
 
     const btnCategory1 = await screen
-    .findByTestId(`${categoryDrink[0].strCategory}-category-filter`);
+      .findByTestId(`${categoryDrink[0].strCategory}-category-filter`);
     const btnCategory2 = await screen
-    .findByTestId(`${categoryDrink[1].strCategory}-category-filter`);
+      .findByTestId(`${categoryDrink[1].strCategory}-category-filter`);
     const btnCategory3 = await screen
-    .findByTestId(`${categoryDrink[2].strCategory}-category-filter`);
+      .findByTestId(`${categoryDrink[2].strCategory}-category-filter`);
     const btnCategory4 = await screen
-    .findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
+      .findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
     const btnCategory5 = await screen
-    .findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
+      .findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
 
     const btnAll = screen.getByTestId('All-category-filter');
 

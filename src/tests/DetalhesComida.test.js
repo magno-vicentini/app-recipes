@@ -33,7 +33,7 @@ describe('Verifica DetalhesComida Page', () => {
     const mockedFetch = (url) => {
       switch (url) {
       case 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768':
-          return Promise.resolve({ json: jest.fn().mockResolvedValue(mockMeals) });
+        return Promise.resolve({ json: jest.fn().mockResolvedValue(mockMeals) });
       default: return url;
       }
     };

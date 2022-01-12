@@ -16,62 +16,62 @@ const mockComida = [
   {
     idMeal: '52894',
     strMeal: 'Apple e Blackberry52893',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719183.jpg',
   },
   {
     idMeal: '52895',
     strMeal: 'Apple e Blackberry52895',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719184.jpg',
   },
   {
     idMeal: '52896',
     strMeal: 'Apple e Blackberry52896',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719185.jpg',
   },
   {
     idMeal: '52897',
     strMeal: 'Apple e Blackberry52897',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719186.jpg',
   },
   {
     idMeal: '52898',
     strMeal: 'Apple e Blackberry52898',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719187.jpg',
   },
   {
     idMeal: '52899',
     strMeal: 'Apple e Blackberry52899',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719188.jpg',
   },
   {
     idMeal: '528910',
     strMeal: 'Apple e Blackberry528910',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719189.jpg',
   },
   {
     idMeal: '528911',
     strMeal: 'Apple e Blackberry528911',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719190.jpg',
   },
   {
     idMeal: '528912',
     strMeal: 'Apple e Blackberry528912',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719191.jpg',
   },
   {
     idMeal: '528913',
     strMeal: 'Apple e Blackberry528913',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719192.jpg',
   },
   {
     idMeal: '5289314',
     strMeal: 'Apple e Blackberry5289314',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719193.jpg',
   },
   {
     idMeal: '5289315',
     strMeal: 'Apple e Blackberry5289315',
-    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719194.jpg',
   },
 ];
 
@@ -98,20 +98,19 @@ export const doneRecipes = [{
   name: 'Corba',
   image: 'https://www.themealdb.com/images/media/meals/58oia61564916529.jpg',
   doneDate: '12/01/2022',
-  tags:['Soup']
-  },
-  {
-    alcoholicOrNot: 'Optional alcohol',
-    area: '',
-    category: 'Ordinary Drink',
-    doneDate: '12/01/2022',
-    id: '15997',
-    image: 'https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg',
-    name: 'GG',
-    tags: [],
-    type: 'bebida',
-  },
-];
+  tags: ['Soup'],
+},
+{
+  alcoholicOrNot: 'Optional alcohol',
+  area: '',
+  category: 'Ordinary Drink',
+  doneDate: '12/01/2022',
+  id: '15997',
+  image: 'https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg',
+  name: 'GG',
+  tags: [],
+  type: 'bebida',
+}];
 
 export const favoriteRecipes = [
   {
