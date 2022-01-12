@@ -1,3 +1,4 @@
+import clipboardCopy from 'clipboard-copy';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -17,7 +18,7 @@ function ReceitasFeitas() {
 
   function copyRecipeLink(pathDetail) {
     const link = `http://localhost:3000${pathDetail}`;
-    navigator.clipboard.writeText(link);
+    clipboardCopy(link);
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   }
@@ -76,7 +77,7 @@ function ReceitasFeitas() {
                 data-testid={ `${index}-horizontal-share-btn` }
               />
             </button>
-            { showIsCopy ? <p>Link copiado!</p> : '' }
+            { showIsCopy && <p>Link copiado!</p> }
             <h3
               data-testid={ `${index}-horizontal-done-date` }
             >

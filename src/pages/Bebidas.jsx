@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import useCategoryDrinks from '../hooks/useCategoryDrinks';
-import { categoryDrink, mockDrinks } from '../mocks/bebidas';
+import { categoryDrink } from '../mocks/bebidas';
 
 function Bebidas({ renderTest = false }) {
   const searchFilter = 'search.php?s=';
@@ -16,17 +16,21 @@ function Bebidas({ renderTest = false }) {
 
   const URL = `https://www.thecocktaildb.com/api/json/v1/1/${filterUsed}`;
 
-  const { render, setRender } = useContext(AppDeReceitasContext);
+  const { render,
+    setRender,
+    isFilterByIngredient } = useContext(AppDeReceitasContext);
 
   const fetchDrinks = async () => {
     const { drinks } = await fetch(URL).then((response) => response.json());
-    if (renderTest) {
-      setRender(mockDrinks.drinks);
-      setDrinksCategories(categoryDrink);
-    } else setRender(drinks);
+    setRender(drinks)
   };
   useEffect(() => {
-    fetchDrinks();    
+    if (!isFilterByIngredient) {
+      fetchDrinks();
+      if (renderTest) {
+        setDrinksCategories(categoryDrink);
+      }
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
 
@@ -57,7 +61,7 @@ function Bebidas({ renderTest = false }) {
       >
         All
       </button>
-      {render.length > 0
+      {render
         && render.map((e, i) => {
           if (i < TWELVE) {
             return (

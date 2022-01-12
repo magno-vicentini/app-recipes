@@ -1,6 +1,11 @@
 import mockBebidas from '../mocks/bebidas';
 import mockComida from '../mocks/comidas';
-import { fetchDrinkApi, fetchMealApi, fetchRecipe } from "../services/fetchAPI";
+import { 
+  fetchDrinkApi, 
+  fetchMealApi, 
+  fetchRecipe,
+  fetchIngredients,
+  fetchAreas } from "../services/fetchAPI";
 
 describe('Verifica FetchApi', () => {
   it('Verifica FetchApi fetchMealApi', async () => {
@@ -40,5 +45,28 @@ describe('Verifica FetchApi', () => {
 
     const fetchTwo = await fetchRecipe('drink', '456')
     expect(fetchTwo).toBe(mockComida);
+  });
+
+  it('Verifica FetchApi fetchIngredients', async () => {
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockComida),
+    });
+    
+    const fetch = await fetchIngredients('food')
+    expect(fetch).toBe(mockComida);
+
+    const fetchTwo = await fetchIngredients('drink')
+    expect(fetchTwo).toBe(mockComida);
+  });
+
+  it('Verifica FetchApi fetchAreas', async () => {
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockComida),
+    });
+    
+    const fetch = await fetchAreas()
+    expect(fetch).toBe(mockComida);
   });
 });

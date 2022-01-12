@@ -12,6 +12,7 @@ export default function Search() {
   } = useContext(AppDeReceitasContext);
   const { pathname } = useLocation();
   const { push } = useHistory();
+
   const handleClick = async (e) => {
     e.preventDefault();
     if (pathname === '/comidas' || pathname === '/explorar/comidas/area') {

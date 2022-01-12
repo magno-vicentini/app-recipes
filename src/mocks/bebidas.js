@@ -95,7 +95,27 @@ export const mockDrinks = {
       strIngredient1: 'digestive biscuit',
       strMeasure1: '175g/6oz',
       strInstruction: 'Preheat the oven',
-    }
+    },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
+    { idDrink: '17222' },
   ]
 }
 
