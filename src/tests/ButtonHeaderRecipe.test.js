@@ -13,7 +13,7 @@ const setFavorite = (payload) => {
   return isFavorite;
 };
 
-describe.skip('Verifica component Button em HeaderRecipe', () => {
+describe('Verifica component Button em HeaderRecipe', () => {
   it('Verifica component Button em HeaderRecipe', () => {
     renderWithRouter(
       <AppDeReceitasProvider>
@@ -54,7 +54,7 @@ describe.skip('Verifica component Button em HeaderRecipe', () => {
     userEvent.click(btnFavorite);
     expect(isFavorite).toBe(true);
 
-    userEvent.click(btnShare);
+    // userEvent.click(btnShare);
   });
 
   it('Verifica buttons LocalStorage True', () => {

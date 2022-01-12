@@ -57,4 +57,5 @@ describe('Verifica DetalhesComida Page', () => {
     expect(recipeCategory).toBeInTheDocument();
     expect(recipeCategory.innerHTML).toBe(mockComida[0].strCategory);
   });
+
 });

@@ -32,11 +32,6 @@ describe('Testes ReceitasFavoritas Page', () => {
     expect(foodFiltered).toBeInTheDocument();
     expect(foodFiltered.src).toBe(favoriteRecipes[0].image);
 
-    /* userEvent.click(btnFilterDrinks);
-
-    const drinkFiltered = await screen.findByTestId('0-horizontal-image');
-
-    expect(drinkFiltered).toBeInTheDocument();
-    expect(drinkFiltered.src).toBe(favoriteRecipes[1].image);  */
+    userEvent.click(btnFilterDrinks);
   });
 });
