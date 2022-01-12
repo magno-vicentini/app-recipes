@@ -50,7 +50,7 @@ describe('', () => {
     const btnCategory5 = await screen
       .findByTestId(`${categoryFood[3].strCategory}-category-filter`);
 
-    const btnAll = screen.getByTestId(`All-category-filter`);
+    const btnAll = screen.getByTestId('All-category-filter');
 
     expect(btnCategory1).toBeInTheDocument();
     expect(btnCategory2).toBeInTheDocument();

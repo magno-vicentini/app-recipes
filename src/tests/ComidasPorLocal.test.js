@@ -26,7 +26,7 @@ describe('ComidasPorLocal Page', () => {
     expect(SelectArea).toBeInTheDocument();
     expect(areaOption).toBeInTheDocument();
 
-    fireEvent.change(SelectArea, {target: { value: 'area1-option' }} );
-    fireEvent.change(SelectArea, {target: { value: 'All' }} );
+    fireEvent.change(SelectArea, { target: { value: 'area1-option' } });
+    fireEvent.change(SelectArea, { target: { value: 'All' } });
   });
 });
