@@ -48,7 +48,6 @@ export default function Buttons({ typeRecipe, isFavorite, setFavorite }) {
     e.preventDefault();
     const link = `http://localhost:3000/${typeRecipe[1]}s/${params.id}`;
     clipboardCopy(link);
-    
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   };
