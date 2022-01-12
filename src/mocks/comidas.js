@@ -118,11 +118,11 @@ export const inProgressRecipes = {
   },
   meals: {
     52977: [
-    'Lentils - 1 cup ',
-    'Onion - 1 large',
-    'Carrots - 1 large',
-    'Sea Salt - Pinch',
-    'Water - 1 cup ',
+      'Lentils - 1 cup ',
+      'Onion - 1 large',
+      'Carrots - 1 large',
+      'Sea Salt - Pinch',
+      'Water - 1 cup ',
     ],
   },
 };

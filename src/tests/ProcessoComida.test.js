@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
+import { Route, Switch } from 'react-router-dom';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import ProcessoComida from '../pages/ProcessoComida';
 import renderWithRouter from './renderWithRouter';
 import { fetchRecipe } from '../services/fetchAPI';
 import mockComida, { mockMeals, inProgressRecipes } from '../mocks/comidas';
-import { Route, Switch } from 'react-router-dom';
 
 jest.mock('../services/fetchAPI/');
 describe('Testes ProcessoComida Page', () => {
@@ -20,7 +20,7 @@ describe('Testes ProcessoComida Page', () => {
         <AppDeReceitasProvider>
           <Switch>
             <Route exact path="/comidas/:id/in-progress" component={ ProcessoComida } />
-          </ Switch>
+          </Switch>
         </AppDeReceitasProvider>,
       );
       history.push('comidas/52977/in-progress');

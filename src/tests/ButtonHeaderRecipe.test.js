@@ -47,7 +47,7 @@ describe('Verifica component Button em HeaderRecipe', () => {
       </AppDeReceitasProvider>,
     );
 
-    const btnShare = screen.getByTestId('share-btn');
+    // const btnShare = screen.getByTestId('share-btn');
     const btnFavorite = screen.getByTestId(btnFavoriteTest);
 
     expect(isFavorite).toBe(false);

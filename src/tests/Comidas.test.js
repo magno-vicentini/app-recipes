@@ -80,6 +80,5 @@ describe('', () => {
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockMeals),
     });
-    
   });
 });

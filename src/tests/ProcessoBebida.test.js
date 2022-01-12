@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
+import { Route, Switch } from 'react-router-dom';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import ProcessoBebida from '../pages/ProcessoBebida';
 import renderWithRouter from './renderWithRouter';
 import { fetchRecipe } from '../services/fetchAPI';
 import mockDrink, { mockDrinks, inProgressRecipes } from '../mocks/bebidas';
-import { Route, Switch } from 'react-router-dom';
 
 jest.mock('../services/fetchAPI/');
 describe('Testes ProcessoBebida Page', () => {
@@ -20,7 +20,7 @@ describe('Testes ProcessoBebida Page', () => {
         <AppDeReceitasProvider>
           <Switch>
             <Route exact path="/bebidas/:id/in-progress" component={ ProcessoBebida } />
-          </ Switch>
+          </Switch>
         </AppDeReceitasProvider>,
       );
       history.push('bebidas/15997/in-progress');
