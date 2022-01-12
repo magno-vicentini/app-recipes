@@ -12,9 +12,9 @@ describe('Testes ReceitasFeitas Page', () => {
   });
   it('ReceitasFeitas Page', () => {
     renderWithRouter(
-      <AppDeReceitasProvider >
+      <AppDeReceitasProvider>
         <ReceitasFeitas />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
     const btnFilterAll = screen.getByTestId('filter-by-all-btn');

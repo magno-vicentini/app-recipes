@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -22,7 +23,7 @@ function Bebidas({ renderTest = false }) {
 
   const fetchDrinks = async () => {
     const { drinks } = await fetch(URL).then((response) => response.json());
-    setRender(drinks)
+    setRender(drinks);
   };
   useEffect(() => {
     if (!isFilterByIngredient) {
@@ -82,5 +83,13 @@ function Bebidas({ renderTest = false }) {
     </div>
   );
 }
+
+Bebidas.propTypes = {
+  renderTest: PropTypes.bool,
+};
+
+Bebidas.defaultProps = {
+  renderTest: false,
+};
 
 export default Bebidas;

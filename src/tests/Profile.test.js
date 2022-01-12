@@ -23,7 +23,7 @@ describe('Testes Perfil Page', () => {
   it('Verifica Perfil contem todos components na pagina', async () => {
     await act(async () => {
       renderWithRouter(<Perfil />);
-    });    
+    });
 
     const emailProfile = screen.getByTestId(dataTestEmailProfile);
     const btnReceitasFeitas = screen.getByTestId(dataTestBtnReceitasFeitas);
@@ -39,7 +39,7 @@ describe('Testes Perfil Page', () => {
   it('Verifica Email esta no localStorage', async () => {
     await act(async () => {
       renderWithRouter(<Perfil />);
-    });   
+    });
 
     const emailProfile = screen.getByTestId(dataTestEmailProfile);
     console.log(emailProfile.innerHTML);
@@ -72,7 +72,7 @@ describe('Testes Perfil Page', () => {
 
   it('Verifica direcionamento para pagina Login', async () => {
     await act(async () => {
-      renderWithRouter(<Perfil />);      
+      renderWithRouter(<Perfil />);
     });
 
     const userName = JSON.parse(localStorage.getItem('user')).email;

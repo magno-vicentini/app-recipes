@@ -3,28 +3,32 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
-import mockBebidas, { categoryDrink } from '../mocks/bebidas';
+import mockBebidas, { categoryDrink, mockDrinks } from '../mocks/bebidas';
 import Bebidas from '../pages/Bebidas';
 import renderWithRouter from './renderWithRouter';
-import { mockDrinks } from '../mocks/bebidas';
 
 describe('', () => {
   it('Test Button Category', async () => {
     await act(async () => {
       renderWithRouter(
         <AppDeReceitasProvider>
-          <Bebidas renderTest={ true } />
+          <Bebidas renderTest />
         </AppDeReceitasProvider>,
       );
     });
 
-    const btnCategory1 = await screen.findByTestId(`${categoryDrink[0].strCategory}-category-filter`);
-    const btnCategory2 = await screen.findByTestId(`${categoryDrink[1].strCategory}-category-filter`);
-    const btnCategory3 = await screen.findByTestId(`${categoryDrink[2].strCategory}-category-filter`);
-    const btnCategory4 = await screen.findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
-    const btnCategory5 = await screen.findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
+    const btnCategory1 = await screen
+    .findByTestId(`${categoryDrink[0].strCategory}-category-filter`);
+    const btnCategory2 = await screen
+    .findByTestId(`${categoryDrink[1].strCategory}-category-filter`);
+    const btnCategory3 = await screen
+    .findByTestId(`${categoryDrink[2].strCategory}-category-filter`);
+    const btnCategory4 = await screen
+    .findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
+    const btnCategory5 = await screen
+    .findByTestId(`${categoryDrink[3].strCategory}-category-filter`);
 
-    const btnAll = screen.getByTestId(`All-category-filter`);
+    const btnAll = screen.getByTestId('All-category-filter');
 
     expect(btnCategory1).toBeInTheDocument();
     expect(btnCategory2).toBeInTheDocument();
@@ -41,7 +45,7 @@ describe('', () => {
     userEvent.click(btnCategory4);
     userEvent.click(btnCategory5);
     userEvent.click(btnAll);
-  })
+  });
 
   it('Verifica component Bebidas', async () => {
     jest.spyOn(global, 'fetch');
@@ -50,7 +54,7 @@ describe('', () => {
     });
 
     renderWithRouter(
-      <AppDeReceitasProvider renderTest={ 'bebidas' }>
+      <AppDeReceitasProvider renderTest="bebidas">
         <Bebidas />
       </AppDeReceitasProvider>,
     );

@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import Explorar from '../pages/Explorar';
 import renderWithRouter from './renderWithRouter';

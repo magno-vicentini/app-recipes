@@ -88,6 +88,11 @@ Comidas.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  renderTest: PropTypes.bool,
+};
+
+Comidas.defaultProps = {
+  renderTest: false,
 };
 
 export default Comidas;

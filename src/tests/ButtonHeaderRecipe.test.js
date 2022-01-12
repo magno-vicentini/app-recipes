@@ -6,25 +6,24 @@ import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
 import renderWithRouter from './renderWithRouter';
 
 let isFavorite = false;
+const btnFavoriteTest = 'favorite-btn'
 
-const setFavorite = (payload) => {
-   return isFavorite = payload;
-};
+const setFavorite = (payload) => isFavorite = payload;
 
 describe('Verifica component Button em HeaderRecipe', () => {
   it('Verifica component Button em HeaderRecipe', () => {
     renderWithRouter(
       <AppDeReceitasProvider>
-        <Button 
+        <Button
           typeRecipe={ ['Meal', 'comida'] }
           isFavorite={ isFavorite }
           setFavorite={ setFavorite }
         />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
     const btnShare = screen.getByTestId('share-btn');
-    const btnFavorite = screen.getByTestId('favorite-btn');
+    const btnFavorite = screen.getByTestId(btnFavoriteTest);
 
     expect(btnShare).toBeInTheDocument();
     expect(btnFavorite).toBeInTheDocument();
@@ -36,17 +35,17 @@ describe('Verifica component Button em HeaderRecipe', () => {
   it('Verifica buttons', () => {
     renderWithRouter(
       <AppDeReceitasProvider>
-        <Button 
+        <Button
           typeRecipe={ ['Meal', 'comida'] }
           isFavorite={ isFavorite }
           setFavorite={ setFavorite }
-          renderTest={ true }
+          renderTest
         />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
     const btnShare = screen.getByTestId('share-btn');
-    const btnFavorite = screen.getByTestId('favorite-btn');
+    const btnFavorite = screen.getByTestId(btnFavoriteTest);
 
     expect(isFavorite).toBe(false);
     userEvent.click(btnFavorite);
@@ -60,16 +59,16 @@ describe('Verifica component Button em HeaderRecipe', () => {
     setFavorite(false);
     renderWithRouter(
       <AppDeReceitasProvider>
-        <Button 
+        <Button
           typeRecipe={ ['Meal', 'comida'] }
           isFavorite={ isFavorite }
           setFavorite={ setFavorite }
-          renderTest={ true }
+          renderTest
         />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
-    const btnFavorite = screen.getByTestId('favorite-btn');
+    const btnFavorite = screen.getByTestId(btnFavoriteTest);
 
     expect(isFavorite).toBe(false);
     userEvent.click(btnFavorite);
@@ -81,16 +80,16 @@ describe('Verifica component Button em HeaderRecipe', () => {
     setFavorite(true);
     renderWithRouter(
       <AppDeReceitasProvider>
-        <Button 
+        <Button
           typeRecipe={ ['Meal', 'comida'] }
           isFavorite={ isFavorite }
           setFavorite={ setFavorite }
-          renderTest={ true }
+          renderTest
         />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
-    const btnFavorite = screen.getByTestId('favorite-btn');
+    const btnFavorite = screen.getByTestId(btnFavoriteTest);
 
     expect(isFavorite).toBe(true);
     userEvent.click(btnFavorite);

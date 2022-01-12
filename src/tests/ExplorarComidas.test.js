@@ -7,14 +7,14 @@ import renderWithRouter from './renderWithRouter';
 import { mockMeals } from '../mocks/comidas';
 
 describe('Verifica component ExplorarComidas Page', () => {
-  it('Verifica component ExplorarComidas Page',async () => {
+  it('Verifica component ExplorarComidas Page', async () => {
     jest.spyOn(global, 'fetch');
     global.fetch.mockResolvedValue({
       json: jest.fn().mockResolvedValue(mockMeals),
     });
     await act(async () => {
       renderWithRouter(<ExplorarComidas />);
-    })
+    });
 
     const btnExploreIngredient = screen.getByTestId('explore-by-ingredient');
     const btnExploreSurprise = screen.getByTestId('explore-surprise');

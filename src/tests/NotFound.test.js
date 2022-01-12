@@ -5,8 +5,8 @@ import NotFound from '../pages/NotFound';
 describe('NotFound Page', () => {
   it('Verifica component NotFound', () => {
     render(<NotFound />);
-    
+
     const btnIngrandient = screen.getByText(/Not Found/i);
     expect(btnIngrandient).toBeInTheDocument();
-  })
+  });
 });

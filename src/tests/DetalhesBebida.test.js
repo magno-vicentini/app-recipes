@@ -17,11 +17,11 @@ describe('Verifica component Button em HeaderRecipe', () => {
   it('Verifica component Button em HeaderRecipe', async () => {
     await act(async () => {
       renderWithRouter(
-        <AppDeReceitasProvider >
+        <AppDeReceitasProvider>
           <DetalhesBebida />
-        </AppDeReceitasProvider>
+        </AppDeReceitasProvider>,
       );
-    })
+    });
 
     const btnStartRecipe = screen.getByTestId('start-recipe-btn');
 
@@ -30,22 +30,21 @@ describe('Verifica component Button em HeaderRecipe', () => {
     userEvent.click(btnStartRecipe);
   });
 
-  it('Verifica component HeaderRecipe',async () => {
+  it('Verifica component HeaderRecipe', async () => {
     renderWithRouter(
-      <AppDeReceitasProvider >
+      <AppDeReceitasProvider>
         <DetalhesBebida />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
     const recipeTitle = await screen.findByText(/a1/i);
-    const recipePhoto = screen.getByTestId('recipe-photo'); 
-    const recipeCategory =  screen.getByTestId('recipe-category');
+    const recipePhoto = screen.getByTestId('recipe-photo');
+    const recipeCategory = screen.getByTestId('recipe-category');
     expect(recipeTitle).toBeInTheDocument();
-    expect(recipeTitle.innerHTML).toBe(mockDrink[0].strDrink)
+    expect(recipeTitle.innerHTML).toBe(mockDrink[0].strDrink);
     expect(recipePhoto.src).toBe(mockDrink[0].strDrinkThumb);
     expect(recipeCategory).toBeInTheDocument();
     expect(recipeCategory.innerHTML)
-    .toBe(`${mockDrink[0].strCategory} - ${mockDrink[0].strAlcoholic}`);
-    
+      .toBe(`${mockDrink[0].strCategory} - ${mockDrink[0].strAlcoholic}`);
   });
 });

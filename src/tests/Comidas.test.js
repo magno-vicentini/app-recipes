@@ -10,7 +10,7 @@ import renderWithRouter from './renderWithRouter';
 describe('', () => {
   it('Verifica component Comidas', async () => {
     renderWithRouter(
-      <AppDeReceitasProvider renderTest={ 'comidas' }>
+      <AppDeReceitasProvider renderTest="comidas">
         <Comidas />
       </AppDeReceitasProvider>,
     );

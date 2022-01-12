@@ -12,77 +12,77 @@ const mockBebidas = [
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
   {
     idDrink: '13501',
     strDrink: 'ABC',
-    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg'
+    strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg',
   },
-]
+];
 
 export const categoryDrink = [
   { strCategory: 'coca' },
   { strCategory: 'suco' },
   { strCategory: 'agua' },
   { strCategory: 'limonada' },
-  { strCategory: 'pinga' }
-]
+  { strCategory: 'pinga' },
+];
 
 export const mockDrinks = {
   drinks: [
@@ -116,7 +116,8 @@ export const mockDrinks = {
     { idDrink: '17222' },
     { idDrink: '17222' },
     { idDrink: '17222' },
-  ]
-}
+  ],
+};
 
 export default mockBebidas;
+

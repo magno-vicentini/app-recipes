@@ -17,45 +17,44 @@ describe('Verifica DetalhesComida Page', () => {
   it('Verifica component DetalhesComida', async () => {
     await act(async () => {
       renderWithRouter(
-        <AppDeReceitasProvider >
+        <AppDeReceitasProvider>
           <DetalhesComida />
-        </AppDeReceitasProvider>
+        </AppDeReceitasProvider>,
       );
-    })
+    });
 
     const btnStartRecipe = screen.getByTestId('start-recipe-btn');
     expect(btnStartRecipe).toBeInTheDocument();
 
-    userEvent.click(btnStartRecipe);    
+    userEvent.click(btnStartRecipe);
   });
 
   it.skip('', () => {
     const mockedFetch = (url) => {
-      switch(url){
-          case 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768':
-              return Promise.resolve({ json: jest.fn().mockResolvedValue(mockMeals) });
-        default: return url;
+      switch (url) {
+      case 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768':
+          return Promise.resolve({ json: jest.fn().mockResolvedValue(mockMeals) });
+      default: return url;
       }
-    }
-    jest.spyOn(global, 'fetch').mockImplementation(mockedFetch)
-    console.log(fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768'))
+    };
+    jest.spyOn(global, 'fetch').mockImplementation(mockedFetch);
+    console.log(fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52768'));
   });
 
-  it('Verifica component HeaderRecipe',async () => {
-    const { history } = renderWithRouter(
-      <AppDeReceitasProvider >
+  it('Verifica component HeaderRecipe', async () => {
+    renderWithRouter(
+      <AppDeReceitasProvider>
         <DetalhesComida />
-      </AppDeReceitasProvider>
+      </AppDeReceitasProvider>,
     );
 
     const recipeTitle = await screen.findByText(/Apple/i);
-    const recipePhoto = screen.getByTestId('recipe-photo'); 
-    const recipeCategory =  screen.getByTestId('recipe-category');
+    const recipePhoto = screen.getByTestId('recipe-photo');
+    const recipeCategory = screen.getByTestId('recipe-category');
     expect(recipeTitle).toBeInTheDocument();
-    expect(recipeTitle.innerHTML).toBe(mockComida[0].strMeal)
+    expect(recipeTitle.innerHTML).toBe(mockComida[0].strMeal);
     expect(recipePhoto.src).toBe(mockComida[0].strMealThumb);
     expect(recipeCategory).toBeInTheDocument();
     expect(recipeCategory.innerHTML).toBe(mockComida[0].strCategory);
-    
   });
 });

@@ -13,8 +13,8 @@ const AppDeReceitasProveider = ({ children, renderTest = '' }) => {
   const [render, setRender] = useState([]);
 
   useEffect(() => {
-    if(renderTest === 'comidas') setRender(mockComida);
-    else if(renderTest === 'bebidas') setRender(mockBebidas);
+    if (renderTest === 'comidas') setRender(mockComida);
+    else if (renderTest === 'bebidas') setRender(mockBebidas);
   }, []);
 
   const handleRadioChange = ({ target }) => {
@@ -53,6 +53,11 @@ const AppDeReceitasProveider = ({ children, renderTest = '' }) => {
 
 AppDeReceitasProveider.propTypes = {
   children: PropTypes.node.isRequired,
+  renderTest: PropTypes.string,
+};
+
+AppDeReceitasProveider.defaultProps = {
+  renderTest: '',
 };
 
 export default AppDeReceitasProveider;

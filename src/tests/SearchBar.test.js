@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import SearchBar from '../components/SearchBar';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
-import mockComida from '../mocks/comidas';
 import renderWithRouter from './renderWithRouter';
 
 const dataSearchInput = 'search-input';
@@ -13,7 +12,7 @@ const dataTestRdFirstLetter = 'first-letter-search-radio';
 const dataTestBtnRdSearch = 'exec-search-btn';
 
 describe('Verifica SearchBar', () => {
-  it('Verifica componets searchBar',() => {
+  it('Verifica componets searchBar', () => {
     renderWithRouter(
       <AppDeReceitasProvider>
         <SearchBar />
@@ -32,20 +31,20 @@ describe('Verifica SearchBar', () => {
     expect(rdFirstLetter).toBeInTheDocument();
     expect(btnRdSearch).toBeInTheDocument();
 
-    userEvent.type(inputSearch, 'comida')
+    userEvent.type(inputSearch, 'comida');
     expect(inputSearch.value).toBe('comida');
 
-    userEvent.click(rdIngredient)
+    userEvent.click(rdIngredient);
     expect(rdIngredient.checked).toBe(true);
     expect(rdName.checked).toBe(false);
     expect(rdFirstLetter.checked).toBe(false);
 
-    userEvent.click(rdName)
+    userEvent.click(rdName);
     expect(rdName.checked).toBe(true);
     expect(rdIngredient.checked).toBe(false);
     expect(rdFirstLetter.checked).toBe(false);
 
-    userEvent.click(rdFirstLetter)
+    userEvent.click(rdFirstLetter);
     expect(rdFirstLetter.checked).toBe(true);
     expect(rdIngredient.checked).toBe(false);
     expect(rdName.checked).toBe(false);

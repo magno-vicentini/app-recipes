@@ -14,7 +14,7 @@ describe('Verifica component ExplorarBebidas Page', () => {
     });
     await act(async () => {
       renderWithRouter(<ExplorarBebidas />);
-    })
+    });
 
     const btnExploreIngredient = screen.getByTestId('explore-by-ingredient');
     const btnExploreSurprise = screen.getByTestId('explore-surprise');

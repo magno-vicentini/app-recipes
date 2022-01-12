@@ -11,14 +11,14 @@ describe('Testes ReceitasFavoritas Page', () => {
   beforeEach(() => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
   });
-  it('ReceitasFavoritas Page',async () => {
+  it('ReceitasFavoritas Page', async () => {
     await act(async () => {
       renderWithRouter(
-        <AppDeReceitasProvider >
+        <AppDeReceitasProvider>
           <ReceitasFavoritas />
-        </AppDeReceitasProvider>
+        </AppDeReceitasProvider>,
       );
-    })
+    });
     const btnFilterFood = screen.getByTestId('filter-by-food-btn');
     const btnFilterDrinks = screen.getByTestId('filter-by-drink-btn');
 
@@ -32,11 +32,11 @@ describe('Testes ReceitasFavoritas Page', () => {
     expect(foodFiltered).toBeInTheDocument();
     expect(foodFiltered.src).toBe(favoriteRecipes[0].image);
 
-    /*userEvent.click(btnFilterDrinks);
+    /* userEvent.click(btnFilterDrinks);
 
     const drinkFiltered = await screen.findByTestId('0-horizontal-image');
 
     expect(drinkFiltered).toBeInTheDocument();
-    expect(drinkFiltered.src).toBe(favoriteRecipes[1].image);*/
+    expect(drinkFiltered.src).toBe(favoriteRecipes[1].image);  */
   });
 });

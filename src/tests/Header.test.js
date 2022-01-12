@@ -6,7 +6,6 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import renderWithRouter from './renderWithRouter';
 
-
 const dataTestBtnProfile = 'profile-top-btn';
 const dataTestPageTitle = 'page-title';
 const dataTestBtnSearch = 'search-top-btn';

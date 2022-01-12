@@ -1,5 +1,4 @@
 import { screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
@@ -16,17 +15,18 @@ describe('ComidasPorLocal Page', () => {
   it('Verifica component ComidasPorLocal', async () => {
     await act(async () => {
       renderWithRouter(
-        <AppDeReceitasProvider >
+        <AppDeReceitasProvider>
           <ComidasPorLocal />
         </AppDeReceitasProvider>,
       );
-    })
+    });
+
     const SelectArea = screen.getByTestId('explore-by-area-dropdown');
     const areaOption = screen.getByTestId('area1-option');
     expect(SelectArea).toBeInTheDocument();
     expect(areaOption).toBeInTheDocument();
-    
-    fireEvent.change(SelectArea, { target: { value: 'area1-option' }} );
-    fireEvent.change(SelectArea, { target: { value: 'All' }} );
-  })
+
+    fireEvent.change(SelectArea, { target: {value: 'area1-option'} } );
+    fireEvent.change(SelectArea, { target: {value: 'All'} } );
+  });
 });

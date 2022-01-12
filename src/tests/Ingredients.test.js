@@ -9,7 +9,7 @@ describe('Verifica component Button em HeaderRecipe', () => {
   it('Verifica component Button em HeaderRecipe', async () => {
     await act(async () => {
       renderWithRouter(<Ingredients ingredients={ ingradados } />);
-    })
+    });
 
     const ingredientsName0 = screen.getByTestId('0-ingredient-name-and-measure');
     const ingredientsName1 = screen.getByTestId('1-ingredient-name-and-measure');
