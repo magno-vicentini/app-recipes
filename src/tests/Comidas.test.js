@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
-import mockComida, { categoryFood } from '../mocks/comidas';
+import mockComida, { categoryFood, mockMeals } from '../mocks/comidas';
 import Comidas from '../pages/Comidas';
 import renderWithRouter from './renderWithRouter';
 
@@ -67,5 +67,19 @@ describe('', () => {
     userEvent.click(btnCategory4);
     userEvent.click(btnCategory5);
     userEvent.click(btnAll);
+  });
+
+  it('Verifica component Comidas', () => {
+    renderWithRouter(
+      <AppDeReceitasProvider>
+        <Comidas />
+      </AppDeReceitasProvider>,
+    );
+
+    jest.spyOn(global, 'fetch');
+    global.fetch.mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockMeals),
+    });
+    
   });
 });

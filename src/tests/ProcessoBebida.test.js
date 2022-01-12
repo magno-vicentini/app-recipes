@@ -2,38 +2,36 @@ import { screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import AppDeReceitasProvider from '../Context/AppDeReceitasProvider';
-import ProcessoComida from '../pages/ProcessoComida';
+import ProcessoBebida from '../pages/ProcessoBebida';
 import renderWithRouter from './renderWithRouter';
 import { fetchRecipe } from '../services/fetchAPI';
-import mockComida, { mockMeals, inProgressRecipes } from '../mocks/comidas';
+import mockDrink, { mockDrinks, inProgressRecipes } from '../mocks/bebidas';
 import { Route, Switch } from 'react-router-dom';
 
 jest.mock('../services/fetchAPI/');
-describe('Testes ProcessoComida Page', () => {
+describe('Testes ProcessoBebida Page', () => {
   beforeEach(() => {
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   });
-  fetchRecipe.mockResolvedValue(mockMeals);
-  it('Verifica componets ProcessoComida page', async () => {
+  fetchRecipe.mockResolvedValue(mockDrinks);
+  it('Verifica componets ProcessoBebida page', async () => {
     await act(async () => {
       const { history } = renderWithRouter(
         <AppDeReceitasProvider>
           <Switch>
-            <Route exact path="/comidas/:id/in-progress" component={ ProcessoComida } />
+            <Route exact path="/bebidas/:id/in-progress" component={ ProcessoBebida } />
           </ Switch>
         </AppDeReceitasProvider>,
       );
-      history.push('comidas/52977/in-progress');
+      history.push('bebidas/15997/in-progress');
     });
 
-    const recipeTitle = await screen.findByText(/Apple/i);
+    const recipeTitle = await screen.findByText(/a1/i);
     const recipePhoto = screen.getByTestId('recipe-photo');
     const recipeCategory = screen.getByTestId('recipe-category');
     expect(recipeTitle).toBeInTheDocument();
-    expect(recipeTitle).toBeInTheDocument();
-    expect(recipeTitle.innerHTML).toBe(mockComida[0].strMeal);
-    expect(recipePhoto.src).toBe(mockComida[0].strMealThumb);
+    expect(recipeTitle.innerHTML).toBe(mockDrink[0].strDrink);
+    expect(recipePhoto.src).toBe(mockDrink[0].strDrinkThumb);
     expect(recipeCategory).toBeInTheDocument();
-    expect(recipeCategory.innerHTML).toBe(mockComida[0].strCategory);
   });
 });

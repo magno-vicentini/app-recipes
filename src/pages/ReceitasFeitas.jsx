@@ -1,5 +1,6 @@
 import clipboardCopy from 'clipboard-copy';
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
@@ -115,5 +116,13 @@ function ReceitasFeitas({ renderTest = false }) {
     </div>
   );
 }
+
+ReceitasFeitas.propTypes = {
+  renderTest: PropTypes.bool,
+};
+
+ReceitasFeitas.defaultProps = {
+  renderTest: false,
+};
 
 export default ReceitasFeitas;

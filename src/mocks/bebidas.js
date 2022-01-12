@@ -76,6 +76,12 @@ const mockBebidas = [
   },
 ];
 
+export const inProgressRecipes = {
+  cocktails: {
+    15997: ['Galliano - 2 1/2 shots ', 'Ginger ale - -', 'Ice - -'],
+  },
+};
+
 export const categoryDrink = [
   { strCategory: 'coca' },
   { strCategory: 'suco' },

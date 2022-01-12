@@ -117,7 +117,13 @@ export const inProgressRecipes = {
     15997: ['Galliano - 2 1/2 shots ', 'Ginger ale - -', 'Ice - -'],
   },
   meals: {
-    52977: ['Lentils - 1 cup ', 'Onion - 1 large', 'Carrots - 1 large', 'Sea Salt - Pinch', 'Water - 1 cup '],
+    52977: [
+    'Lentils - 1 cup ',
+    'Onion - 1 large',
+    'Carrots - 1 large',
+    'Sea Salt - Pinch',
+    'Water - 1 cup ',
+    ],
   },
 };
 
