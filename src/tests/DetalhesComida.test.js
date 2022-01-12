@@ -42,7 +42,7 @@ describe('Verifica DetalhesComida Page', () => {
   });
 
   it('Verifica component HeaderRecipe',async () => {
-    renderWithRouter(
+    const { history } = renderWithRouter(
       <AppDeReceitasProvider >
         <DetalhesComida />
       </AppDeReceitasProvider>

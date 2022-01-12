@@ -48,6 +48,7 @@ function DetalhesComida() {
   useEffect(() => {
     getRecipe();
     const thisRecipe = doneRecipes && doneRecipes.find((e) => e.id === params.id);
+    console.log(params);
     if (thisRecipe) {
       setShowButton(!showButton);
     }
