@@ -5,6 +5,7 @@ import IngredientsInProgress from '../components/In_Progress/IngredientsInProgre
 import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Instructions from '../components/Recipe_Details/Instructions';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
+import { fetchRecipe } from '../services/fetchAPI';
 
 function ProcessoComida() {
   const TWENTY = 20;

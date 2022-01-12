@@ -74,7 +74,7 @@ const mockComida = [
     strMeal: 'Apple e Blackberry',
     strMealThumb: 'https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg'
   },
-]
+];
 
 export const categoryFood = [
   { strCategory: 'feijao' },
@@ -82,13 +82,58 @@ export const categoryFood = [
   { strCategory: 'pao' },
   { strCategory: 'queijo' },
   { strCategory: 'azeite' }
-]
+];
 
 export const ingradados = [
   'ovo',
   'carne',
   'salada',
-]
+];
+
+export const doneRecipes = [{
+  id:"52977",
+  type:"comida",
+  area:"Turkish",
+  category:"Side",
+  alcoholicOrNot:"",
+  name:"Corba",
+  image:"https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
+  doneDate:"12/01/2022",
+  tags:["Soup"]
+  },
+  {
+    alcoholicOrNot: "Optional alcohol",
+    area: "",
+    category: "Ordinary Drink",
+    doneDate: "12/01/2022",
+    id: "15997",
+    image: "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg",
+    name: "GG",
+    tags: [],
+    type: "bebida",
+  }
+];
+
+export const favoriteRecipes = [
+  {
+    alcoholicOrNot: "",
+    area: "Turkish",
+    category: "Side",
+    id: "52977",
+    image: "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg",
+    name: "Corba",
+    type: "comida",
+  },
+  {
+    alcoholicOrNot: "Alcoholic",
+    area: "",
+    category: "Cocktail",
+    id: "17222",
+    image: "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
+    name: "A1",
+    type: "bebida",
+  }
+];
 
 export const mockMeals = {
   meals: [
@@ -123,6 +168,6 @@ export const mockMeals = {
     { strArea: 'area20' },
     { strArea: 'area21' },
   ]
-}
+};
 
 export default mockComida;
