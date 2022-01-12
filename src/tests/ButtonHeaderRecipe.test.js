@@ -54,7 +54,7 @@ describe('Verifica component Button em HeaderRecipe', () => {
     userEvent.click(btnFavorite);
     expect(isFavorite).toBe(true);
 
-    // userEvent.click(btnShare);
+    userEvent.click(btnShare);
   });
 
   it('Verifica buttons LocalStorage True', () => {

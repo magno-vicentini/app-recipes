@@ -13,23 +13,31 @@ describe('Testes ReceitasFeitas Page', () => {
   it('ReceitasFeitas Page', () => {
     renderWithRouter(
       <AppDeReceitasProvider>
-        <ReceitasFeitas />
+        <ReceitasFeitas renderTest />
       </AppDeReceitasProvider>,
     );
-
+    const btnShareTestId = ('share-btn');
     const btnFilterAll = screen.getByTestId('filter-by-all-btn');
     const btnFilterFood = screen.getByTestId('filter-by-food-btn');
     const btnFilterDrink = screen.getByTestId('filter-by-drink-btn');
-    const btnShare = screen.getAllByTestId('share-btn');
 
     expect(btnFilterAll).toBeInTheDocument();
     expect(btnFilterFood).toBeInTheDocument();
     expect(btnFilterDrink).toBeInTheDocument();
-    expect(btnShare[0]).toBeInTheDocument();
+
+    userEvent.click(btnFilterDrink);
+    const btnShareDrink = screen.getByTestId(btnShareTestId);
+    expect(btnShareDrink).toBeInTheDocument();
+    userEvent.click(btnShareDrink);
+
+    userEvent.click(btnFilterFood);
+    const btnShareFood = screen.getByTestId(btnShareTestId);
+    expect(btnShareFood).toBeInTheDocument();
+    userEvent.click(btnShareFood);
 
     userEvent.click(btnFilterAll);
-    userEvent.click(btnFilterDrink);
-    userEvent.click(btnFilterFood);
-    userEvent.click(btnShare[0]);
+    const btnShareAll = screen.getAllByTestId(btnShareTestId);
+    expect(btnShareAll[0]).toBeInTheDocument();
+    expect(btnShareAll[1]).toBeInTheDocument();
   });
 });

@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import './style/ReceitasFeitas.css';
 
-function ReceitasFeitas() {
+function ReceitasFeitas({ renderTest = false }) {
   const [allRecipesDone, setAllRecipesDone] = useState([]);
   const [recipesFiltered, setRecipesFiltered] = useState([]);
   const [showIsCopy, setShowIsCopy] = useState(false);
@@ -18,7 +18,7 @@ function ReceitasFeitas() {
 
   function copyRecipeLink(pathDetail) {
     const link = `http://localhost:3000${pathDetail}`;
-    clipboardCopy(link);
+    if (!renderTest) clipboardCopy(link);
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   }
