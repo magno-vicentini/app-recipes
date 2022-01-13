@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import useCategoryDrinks from '../hooks/useCategoryDrinks';
+import { categoryDrink } from '../mocks/bebidas';
 
-function Bebidas() {
+function Bebidas({ renderTest = false }) {
   const searchFilter = 'search.php?s=';
   const [drinksCategories, setDrinksCategories] = useState([]);
   const [filterUsed, setFilterUsed] = useState(searchFilter);
@@ -26,6 +28,9 @@ function Bebidas() {
   useEffect(() => {
     if (!isFilterByIngredient) {
       fetchDrinks();
+      if (renderTest) {
+        setDrinksCategories(categoryDrink);
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterUsed]);
@@ -78,5 +83,13 @@ function Bebidas() {
     </div>
   );
 }
+
+Bebidas.propTypes = {
+  renderTest: PropTypes.bool,
+};
+
+Bebidas.defaultProps = {
+  renderTest: false,
+};
 
 export default Bebidas;

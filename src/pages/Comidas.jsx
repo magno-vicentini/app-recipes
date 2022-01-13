@@ -6,8 +6,9 @@ import Header from '../components/Header';
 import ResultCard from '../components/ResultCard';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import useCategoryMeals from '../hooks/useCategoryMeals';
+import { categoryFood, mockMeals } from '../mocks/comidas';
 
-function Comidas() {
+function Comidas({ renderTest = false }) {
   const searchFilter = 'search.php?s=';
   const [mealsCategories, setMealsCategories] = useState([]);
   const [filterUsed, setFilterUsed] = useState(searchFilter);
@@ -21,7 +22,10 @@ function Comidas() {
   const URL = `https://www.themealdb.com/api/json/v1/1/${filterUsed}`;
   const fetchMeals = async () => {
     const { meals } = await fetch(URL).then((response) => response.json());
-    setRender(meals);
+    if (renderTest) {
+      setRender(mockMeals.meals);
+      setMealsCategories(categoryFood);
+    } else setRender(meals);
   };
 
   useEffect(() => {
@@ -84,6 +88,11 @@ Comidas.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  renderTest: PropTypes.bool,
+};
+
+Comidas.defaultProps = {
+  renderTest: false,
 };
 
 export default Comidas;

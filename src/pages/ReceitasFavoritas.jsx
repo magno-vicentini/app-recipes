@@ -26,6 +26,7 @@ function ReceitasFavoritas() {
     } else if (filter === 'Drinks' && favoriteRecipes.length > 0) {
       const filtered = favoriteRecipes.filter((fav) => fav.type === 'bebida');
       setFavoriteRecipes(filtered);
+      console.log(filter);
     } else {
       setFavoriteRecipes(favs);
     }

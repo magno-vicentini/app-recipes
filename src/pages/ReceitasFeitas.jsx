@@ -1,11 +1,12 @@
 import clipboardCopy from 'clipboard-copy';
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import './style/ReceitasFeitas.css';
 
-function ReceitasFeitas() {
+function ReceitasFeitas({ renderTest = false }) {
   const [allRecipesDone, setAllRecipesDone] = useState([]);
   const [recipesFiltered, setRecipesFiltered] = useState([]);
   const [showIsCopy, setShowIsCopy] = useState(false);
@@ -18,7 +19,7 @@ function ReceitasFeitas() {
 
   function copyRecipeLink(pathDetail) {
     const link = `http://localhost:3000${pathDetail}`;
-    clipboardCopy(link);
+    if (!renderTest) clipboardCopy(link);
     setShowIsCopy(true);
     setTimeout(() => setShowIsCopy(false), TWO_SECONDS);
   }
@@ -115,5 +116,13 @@ function ReceitasFeitas() {
     </div>
   );
 }
+
+ReceitasFeitas.propTypes = {
+  renderTest: PropTypes.bool,
+};
+
+ReceitasFeitas.defaultProps = {
+  renderTest: false,
+};
 
 export default ReceitasFeitas;

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 export default function Filters({ setFilter }) {
   const handleClick = (e) => {
     e.preventDefault();
-    const { target: { innerText } } = e;
-    setFilter(innerText);
+    const { target: { innerHTML } } = e;
+    setFilter(innerHTML);
   };
 
   return (
