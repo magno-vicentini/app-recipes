@@ -26,7 +26,7 @@ function App() {
     <AppDeReceitasProveider>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ Login } />
+          <Route exact path="/app-recipes" component={ Login } />
           <Route exact path="/comidas/:id/in-progress" component={ ProcessoComida } />
           <Route exact path="/comidas/:id" component={ DetalhesComida } />
           <Route exact path="/comidas" component={ Comidas } />
