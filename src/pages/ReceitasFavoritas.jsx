@@ -3,6 +3,7 @@ import FavoriteCard from '../components/FavoriteRecipes/FavoriteCard';
 import Filters from '../components/FavoriteRecipes/Filters';
 import Header from '../components/Header';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
+import '../styles/ReceitasFavoritas.css';
 
 function ReceitasFavoritas() {
   const { favoriteRecipes,
@@ -37,7 +38,7 @@ function ReceitasFavoritas() {
   }, [filter]);
 
   return (
-    <div className="ReceitasFavoritas-content">
+    <div className="fav-recipe-container">
       <Header showSearch={ false } titlePage="Receitas Favoritas" />
       <Filters setFilter={ setFilter } />
       {

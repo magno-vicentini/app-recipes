@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import '../styles/Perfil.css';
 
 function Perfil() {
   const [email, setEmail] = useState();
@@ -26,32 +27,41 @@ function Perfil() {
   };
 
   return (
-    <div className="Perfil-content">
+    <div className="perfil-container">
       <Header showSearch={ false } titlePage="Perfil" />
-      <h1 data-testid="profile-email">
-        {email}
-      </h1>
-      <button
-        type="button"
-        data-testid="profile-done-btn"
-        onClick={ () => history.push('/receitas-feitas') }
-      >
-        Receitas Feitas
-      </button>
-      <button
-        type="button"
-        data-testid="profile-favorite-btn"
-        onClick={ () => history.push('/receitas-favoritas') }
-      >
-        Receitas Favoritas
-      </button>
-      <button
-        type="button"
-        data-testid="profile-logout-btn"
-        onClick={ () => resetLocalStorage() }
-      >
-        Sair
-      </button>
+      <div className="perfil-card">
+        <h1 data-testid="profile-email">
+          {email}
+        </h1>
+        <div className="perfil-buttons">
+          <button
+            type="button"
+            data-testid="profile-done-btn"
+            onClick={ () => history.push('/receitas-feitas') }
+          >
+            Receitas Feitas
+          </button>
+        </div>
+        <div className="perfil-buttons">
+          <button
+            type="button"
+            data-testid="profile-favorite-btn"
+            onClick={ () => history.push('/receitas-favoritas') }
+          >
+            Receitas Favoritas
+          </button>
+        </div>
+        <div className="perfil-buttons">
+          <button
+            type="button"
+            data-testid="profile-logout-btn"
+            onClick={ () => resetLocalStorage() }
+          >
+            Sair
+          </button>
+
+        </div>
+      </div>
       <Footer />
     </div>
   );

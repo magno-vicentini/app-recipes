@@ -6,7 +6,6 @@ import Instructions from '../components/Recipe_Details/Instructions';
 import Recommended from '../components/Recipe_Details/Recommended';
 import { fetchRecipe, fetchMealApi } from '../services/fetchAPI';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
-import './style/Detalhes.css';
 
 function DetalhesBebida() {
   const TWENTY = 20;

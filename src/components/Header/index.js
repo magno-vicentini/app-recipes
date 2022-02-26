@@ -1,9 +1,13 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
 import SearchBar from '../SearchBar';
+import '../../styles/Header.css';
 
 function Header({ showSearch = true, titlePage }) {
   const [inputSearch, setInputSearch] = useState(false);
@@ -13,8 +17,8 @@ function Header({ showSearch = true, titlePage }) {
   }
 
   return (
-    <div className="header-content">
-      <header>
+    <div className="header-container">
+      <header className="header-card">
         <Link
           data-testid="profile-top-btn"
           to="/perfil"
@@ -24,14 +28,9 @@ function Header({ showSearch = true, titlePage }) {
         </Link>
         <h1 data-testid="page-title">{ titlePage }</h1>
         { showSearch && (
-          <button
-            data-testid="search-top-btn"
-            type="button"
-            onClick={ () => showInput() }
-            src={ searchIcon }
-          >
-            <img src={ searchIcon } alt="icon-search" />
-          </button>
+          <div className="button-search">
+            <img src={ searchIcon } alt="icon-search" onClick={ () => showInput() } />
+          </div>
         )}
       </header>
       { inputSearch && <SearchBar /> }

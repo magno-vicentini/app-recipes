@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppDeReceitasContext from '../../../Context/AppDeReceitasContext';
+import './index.css';
 
 export default function FinishRecipeButton({ isAble, type }) {
   const { push } = useHistory();

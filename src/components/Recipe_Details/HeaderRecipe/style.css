@@ -1,7 +1,22 @@
 .header-img {
-  width: 100vw;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  margin: 0 35%;
+  border-radius: 25px;
+  box-shadow: 10px 10px 7px black;
+  justify-content: center;
+
 }
 
 .icon-img {
   pointer-events: none;
+  color: white;
+}
+
+.header-recipe-container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
 }

@@ -2,3 +2,27 @@
   height: 100px;
   width: 100px;
 }
+
+.favorite-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-card-image-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.favorite-card-header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+img {
+  border-radius: 25px;
+}

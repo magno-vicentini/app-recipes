@@ -1,0 +1,30 @@
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  border-radius: 25px;
+  background-color: rgba(73, 40, 13, 0.678);
+  min-width: 250px;
+  max-width: 300px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.recipe-card img {
+  width: 80%;
+  border-radius: 25px;
+  box-shadow: 9px 7px 10px black;
+  margin: 10px;
+}
+
+.recipe-card p {
+  color: white;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.recipe-card p:hover {
+  color: #1ab61a;
+}

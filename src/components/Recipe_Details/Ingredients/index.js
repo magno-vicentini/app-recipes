@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './ingredients.css';
 
 export default function Ingredients({ ingredients }) {
   return (

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
-import './style/ReceitasFeitas.css';
+import '../styles/ReceitasFeitas.css';
 
 function ReceitasFeitas({ renderTest = false }) {
   const [allRecipesDone, setAllRecipesDone] = useState([]);
@@ -25,36 +25,45 @@ function ReceitasFeitas({ renderTest = false }) {
   }
 
   return (
-    <div className="ReceitasFeitas-content">
+    <div className="done-recipes-container">
       <Header showSearch={ false } titlePage="Receitas Feitas" />
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ () => setRecipesFiltered(allRecipesDone) }
-      >
-        All
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-food-btn"
-        onClick={ () => setRecipesFiltered(allRecipesDone
-          .filter((ele) => ele.type === 'comida')) }
-      >
-        Food
-      </button>
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ () => setRecipesFiltered(allRecipesDone
-          .filter((ele) => ele.type === 'bebida')) }
-      >
-        Drinks
-      </button>
+      <div className="buttons-done">
+        <div>
+          <button
+            type="button"
+            data-testid="filter-by-all-btn"
+            onClick={ () => setRecipesFiltered(allRecipesDone) }
+          >
+            All
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            data-testid="filter-by-food-btn"
+            onClick={ () => setRecipesFiltered(allRecipesDone
+              .filter((ele) => ele.type === 'comida')) }
+          >
+            Food
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            onClick={ () => setRecipesFiltered(allRecipesDone
+              .filter((ele) => ele.type === 'bebida')) }
+          >
+            Drinks
+          </button>
+        </div>
+
+      </div>
       {recipesFiltered
       && (recipesFiltered.map((recipe, index) => {
         const pathDetail = `/${recipe.type}s/${recipe.id}`;
         return (
-          <div key={ recipe.id }>
+          <div key={ recipe.id } className="recipe-detail">
             <Link to={ pathDetail }>
               <h1 data-testid={ `${index}-horizontal-name` }>{ recipe.name }</h1>
             </Link>

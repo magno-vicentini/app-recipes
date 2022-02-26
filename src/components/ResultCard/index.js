@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../../styles/ResultCard.css';
 
 export default function ResultCard({ index, name, image, type }) {
   return (
     <div
       data-testid={ `${index}-${type}-card` }
-      className={ `${type}-card-content` }
+      className="recipe-card"
     >
       <p
         data-testid={ type === 'recipe'

@@ -7,6 +7,7 @@ import ResultCard from '../components/ResultCard';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import useCategoryMeals from '../hooks/useCategoryMeals';
 import { categoryFood, mockMeals } from '../mocks/comidas';
+import '../styles/Comidas.css';
 
 function Comidas({ renderTest = false }) {
   const searchFilter = 'search.php?s=';
@@ -38,47 +39,52 @@ function Comidas({ renderTest = false }) {
   useCategoryMeals(setMealsCategories);
 
   return (
-    <div>
+    <div className="comidas-container">
       <Header titlePage="Comidas" />
-      {
-        mealsCategories.slice(0, FIVE).map((meal) => (
-          <button
-            data-testid={ `${meal.strCategory}-category-filter` }
-            type="button"
-            onClick={ () => ((filterUsed === searchFilter
-              || filterUsed !== `filter.php?c=${meal.strCategory}`)
-              ? setFilterUsed(`filter.php?c=${meal.strCategory}`)
-              : setFilterUsed(searchFilter)) }
-            key={ meal.strCategory }
-          >
-            {meal.strCategory}
-          </button>
-        ))
-      }
-      <button
-        data-testid="All-category-filter"
-        type="button"
-        onClick={ () => setFilterUsed(searchFilter) }
-      >
-        All
-      </button>
-      {render
-        && render.map((e, i) => {
-          if (i < TWELVE) {
-            return (
-              <Link key={ i } to={ `/comidas/${e.idMeal}` }>
-                <ResultCard
-                  type="recipe"
-                  id={ e.idMeal }
-                  index={ i }
-                  image={ e.strMealThumb }
-                  name={ e.strMeal }
-                />
-              </Link>
-            );
-          }
-          return ('');
-        })}
+      <div className="comidas-filtros">
+        {
+          mealsCategories.slice(0, FIVE).map((meal) => (
+            <button
+              data-testid={ `${meal.strCategory}-category-filter` }
+              type="button"
+              onClick={ () => ((filterUsed === searchFilter
+                || filterUsed !== `filter.php?c=${meal.strCategory}`)
+                ? setFilterUsed(`filter.php?c=${meal.strCategory}`)
+                : setFilterUsed(searchFilter)) }
+              key={ meal.strCategory }
+            >
+              {meal.strCategory}
+            </button>
+          ))
+        }
+        <button
+          data-testid="All-category-filter"
+          type="button"
+          onClick={ () => setFilterUsed(searchFilter) }
+        >
+          All
+        </button>
+
+      </div>
+      <div className="recipes-container">
+        {render
+          && render.map((e, i) => {
+            if (i < TWELVE) {
+              return (
+                <Link key={ i } to={ `/comidas/${e.idMeal}` }>
+                  <ResultCard
+                    type="recipe"
+                    id={ e.idMeal }
+                    index={ i }
+                    image={ e.strMealThumb }
+                    name={ e.strMeal }
+                  />
+                </Link>
+              );
+            }
+            return ('');
+          })}
+      </div>
       <Footer />
     </div>
   );

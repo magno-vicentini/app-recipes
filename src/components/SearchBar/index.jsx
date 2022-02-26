@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import AppDeReceitasContext from '../../Context/AppDeReceitasContext';
 import { fetchDrinkApi, fetchMealApi } from '../../services/fetchAPI';
+import './SearchBar.css';
 
 export default function Search() {
   const { handleRadioChange,

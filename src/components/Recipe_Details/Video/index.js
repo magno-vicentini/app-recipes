@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Video.css';
 
 export default function Video({ link }) {
   if (link) {

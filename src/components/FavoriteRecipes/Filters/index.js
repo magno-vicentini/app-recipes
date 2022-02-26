@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './index.css';
 
 export default function Filters({ setFilter }) {
   const handleClick = (e) => {
@@ -9,28 +10,34 @@ export default function Filters({ setFilter }) {
   };
 
   return (
-    <div className="filters-container">
-      <button
-        onClick={ handleClick }
-        type="button"
-        data-testid="filter-by-all-btn"
-      >
-        All
-      </button>
-      <button
-        onClick={ handleClick }
-        type="button"
-        data-testid="filter-by-food-btn"
-      >
-        Food
-      </button>
-      <button
-        onClick={ handleClick }
-        type="button"
-        data-testid="filter-by-drink-btn"
-      >
-        Drinks
-      </button>
+    <div className="filter-container">
+      <div className="button-filter">
+        <button
+          onClick={ handleClick }
+          type="button"
+          data-testid="filter-by-all-btn"
+        >
+          All
+        </button>
+      </div>
+      <div className="button-filter">
+        <button
+          onClick={ handleClick }
+          type="button"
+          data-testid="filter-by-food-btn"
+        >
+          Food
+        </button>
+      </div>
+      <div className="button-filter">
+        <button
+          onClick={ handleClick }
+          type="button"
+          data-testid="filter-by-drink-btn"
+        >
+          Drinks
+        </button>
+      </div>
     </div>
   );
 }

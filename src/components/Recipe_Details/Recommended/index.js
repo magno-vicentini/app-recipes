@@ -7,7 +7,7 @@ export default function Recommended({ recipes, gender }) {
   const SIX = 6;
   return (
     <div className="recommended-container">
-      <h2>Recomendadas</h2>
+      <h2 className="title-recommended">Recomendadas</h2>
       <div className="recommended-content">
         {recipes.map((e, i) => {
           if (i < SIX) {

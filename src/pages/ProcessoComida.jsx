@@ -6,6 +6,7 @@ import HeaderRecipe from '../components/Recipe_Details/HeaderRecipe';
 import Instructions from '../components/Recipe_Details/Instructions';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
 import { fetchRecipe } from '../services/fetchAPI';
+import '../styles/ProcessoComida.css';
 
 function ProcessoComida() {
   const TWENTY = 20;
@@ -38,7 +39,7 @@ function ProcessoComida() {
   }, []);
 
   return (
-    <div className="ProcessoComida-content">
+    <div className="process-food">
       <HeaderRecipe
         typeRecipe={ ['Meal', 'comida'] }
         image={ recipe.strMealThumb }

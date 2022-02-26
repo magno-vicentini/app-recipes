@@ -7,7 +7,8 @@ import Video from '../components/Recipe_Details/Video';
 import Recommended from '../components/Recipe_Details/Recommended';
 import { fetchRecipe, fetchDrinkApi } from '../services/fetchAPI';
 import AppDeReceitasContext from '../Context/AppDeReceitasContext';
-import './style/Detalhes.css';
+
+import '../styles/DetalhesComida.css';
 
 function DetalhesComida() {
   const TWENTY = 20;
@@ -74,7 +75,7 @@ function DetalhesComida() {
   };
 
   return (
-    <div className="DetalhesComida-container">
+    <div className="detalhes-comida">
       {recipe !== {} && (
         <div className="details-food-content">
           <HeaderRecipe
