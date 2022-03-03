@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/app-recipes/static/css/main.b53cc775.chunk.css",
+    "main.css": "/app-recipes/static/css/main.dc10b811.chunk.css",
     "main.js": "/app-recipes/static/js/main.2ec67b2d.chunk.js",
     "main.js.map": "/app-recipes/static/js/main.2ec67b2d.chunk.js.map",
     "runtime-main.js": "/app-recipes/static/js/runtime-main.30185218.js",
@@ -9,17 +9,17 @@
     "static/js/2.1becf4cb.chunk.js": "/app-recipes/static/js/2.1becf4cb.chunk.js",
     "static/js/2.1becf4cb.chunk.js.map": "/app-recipes/static/js/2.1becf4cb.chunk.js.map",
     "index.html": "/app-recipes/index.html",
-    "precache-manifest.3f3a6ae2796fad97b742c49b3b17206d.js": "/app-recipes/precache-manifest.3f3a6ae2796fad97b742c49b3b17206d.js",
+    "precache-manifest.9f14300b1faef575ac18c98b7b1a7575.js": "/app-recipes/precache-manifest.9f14300b1faef575ac18c98b7b1a7575.js",
     "service-worker.js": "/app-recipes/service-worker.js",
     "static/css/2.95258f03.chunk.css.map": "/app-recipes/static/css/2.95258f03.chunk.css.map",
-    "static/css/main.b53cc775.chunk.css.map": "/app-recipes/static/css/main.b53cc775.chunk.css.map",
+    "static/css/main.dc10b811.chunk.css.map": "/app-recipes/static/css/main.dc10b811.chunk.css.map",
     "static/js/2.1becf4cb.chunk.js.LICENSE.txt": "/app-recipes/static/js/2.1becf4cb.chunk.js.LICENSE.txt",
     "static/media/blackHeartIcon.svg": "/app-recipes/static/media/blackHeartIcon.b8913346.svg",
     "static/media/drinkIcon.svg": "/app-recipes/static/media/drinkIcon.f87c47c3.svg",
     "static/media/exploreIcon.svg": "/app-recipes/static/media/exploreIcon.157945ff.svg",
+    "static/media/Login.css": "/app-recipes/static/media/madeira-recipes.814b3c4b.jpg",
     "static/media/mealIcon.svg": "/app-recipes/static/media/mealIcon.b27ba19e.svg",
     "static/media/profileIcon.svg": "/app-recipes/static/media/profileIcon.74e487e5.svg",
-    "static/media/Login.css": "/app-recipes/static/media/recipes-image.fe8746ef.jpg",
     "static/media/searchIcon.svg": "/app-recipes/static/media/searchIcon.db812135.svg",
     "static/media/shareIcon.svg": "/app-recipes/static/media/shareIcon.06215ed4.svg",
     "static/media/whiteHeartIcon.svg": "/app-recipes/static/media/whiteHeartIcon.ea3b6ba8.svg"
@@ -28,7 +28,7 @@
     "static/js/runtime-main.30185218.js",
     "static/css/2.95258f03.chunk.css",
     "static/js/2.1becf4cb.chunk.js",
-    "static/css/main.b53cc775.chunk.css",
+    "static/css/main.dc10b811.chunk.css",
     "static/js/main.2ec67b2d.chunk.js"
   ]
 }

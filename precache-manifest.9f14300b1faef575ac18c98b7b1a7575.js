@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ee0defda2af65087f392aee61fd2fd89",
+    "revision": "2aef612db037aa423adabb3b0271499e",
     "url": "/app-recipes/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-recipes/static/css/2.95258f03.chunk.css"
   },
   {
-    "revision": "0ff439a2d85fe603950d",
-    "url": "/app-recipes/static/css/main.b53cc775.chunk.css"
+    "revision": "131d92078e77cf56d7a6",
+    "url": "/app-recipes/static/css/main.dc10b811.chunk.css"
   },
   {
     "revision": "e2b08a51a1f477cf9d4a",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-recipes/static/js/2.1becf4cb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0ff439a2d85fe603950d",
+    "revision": "131d92078e77cf56d7a6",
     "url": "/app-recipes/static/js/main.2ec67b2d.chunk.js"
   },
   {
@@ -40,16 +40,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/app-recipes/static/media/exploreIcon.157945ff.svg"
   },
   {
+    "revision": "814b3c4b175bb5343d9d3b26eb6d6b6a",
+    "url": "/app-recipes/static/media/madeira-recipes.814b3c4b.jpg"
+  },
+  {
     "revision": "b27ba19ea033355b73926443af1756e9",
     "url": "/app-recipes/static/media/mealIcon.b27ba19e.svg"
   },
   {
     "revision": "74e487e504d5cf16d7832bef2fbacfea",
     "url": "/app-recipes/static/media/profileIcon.74e487e5.svg"
-  },
-  {
-    "revision": "fe8746efdd61192ee69d9138f82eeae8",
-    "url": "/app-recipes/static/media/recipes-image.fe8746ef.jpg"
   },
   {
     "revision": "db81213596cb3beb56440bb39aa70c8c",
